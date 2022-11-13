@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 12-11-2022 a las 19:36:19
+-- Tiempo de generación: 13-11-2022 a las 07:32:20
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.6
 
@@ -28,8 +28,8 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `boleto` (
-  `ClvBoleto` char(4) NOT NULL,
-  `ClvPartido` char(4) NOT NULL
+  `ClvBoleto` int(10) NOT NULL,
+  `ClvPartido` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -39,18 +39,11 @@ CREATE TABLE `boleto` (
 --
 
 CREATE TABLE `direccion` (
-  `ClvLugar` char(4) NOT NULL,
+  `ClvLugar` int(10) NOT NULL,
   `NombreLugar` varchar(30) NOT NULL,
   `Calle` int(11) NOT NULL,
   `Numero` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `direccion`
---
-
-INSERT INTO `direccion` (`ClvLugar`, `NombreLugar`, `Calle`, `Numero`) VALUES
-('1002', 'Petrofila', 26, 18);
 
 -- --------------------------------------------------------
 
@@ -59,24 +52,24 @@ INSERT INTO `direccion` (`ClvLugar`, `NombreLugar`, `Calle`, `Numero`) VALUES
 --
 
 CREATE TABLE `equipo` (
-  `ClvEquipo` char(4) NOT NULL,
+  `ClvEquipo` int(10) NOT NULL,
   `NombreEquipo` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `partido`
+-- Estructura de tabla para la tabla `partidos`
 --
 
-CREATE TABLE `partido` (
-  `ClvPartido` char(4) NOT NULL,
-  `Equipo_1` varchar(30) NOT NULL,
-  `Equipo_2` varchar(30) NOT NULL,
-  `Lugar` char(4) NOT NULL,
-  `Hora` int(11) NOT NULL,
-  `Dia` int(11) NOT NULL,
-  `Mes` int(11) NOT NULL
+CREATE TABLE `partidos` (
+  `ClvPartido` int(10) NOT NULL,
+  `direccion` int(10) NOT NULL,
+  `Equipo_1` int(10) NOT NULL,
+  `Equipo_2` int(10) NOT NULL,
+  `Hora` int(2) NOT NULL,
+  `Dia` int(2) NOT NULL,
+  `Mes` int(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -87,15 +80,14 @@ CREATE TABLE `partido` (
 -- Indices de la tabla `boleto`
 --
 ALTER TABLE `boleto`
-  ADD PRIMARY KEY (`ClvBoleto`,`ClvPartido`),
-  ADD KEY `ClvPartido` (`ClvPartido`);
+  ADD PRIMARY KEY (`ClvBoleto`),
+  ADD UNIQUE KEY `ClvPartido` (`ClvPartido`);
 
 --
 -- Indices de la tabla `direccion`
 --
 ALTER TABLE `direccion`
-  ADD PRIMARY KEY (`ClvLugar`),
-  ADD KEY `ClvLugar` (`ClvLugar`);
+  ADD PRIMARY KEY (`ClvLugar`);
 
 --
 -- Indices de la tabla `equipo`
@@ -104,13 +96,41 @@ ALTER TABLE `equipo`
   ADD PRIMARY KEY (`ClvEquipo`);
 
 --
--- Indices de la tabla `partido`
+-- Indices de la tabla `partidos`
 --
-ALTER TABLE `partido`
+ALTER TABLE `partidos`
   ADD PRIMARY KEY (`ClvPartido`),
-  ADD KEY `Equipo_1` (`Equipo_1`,`Equipo_2`,`Lugar`),
-  ADD KEY `Lugar` (`Lugar`),
+  ADD UNIQUE KEY `direccion` (`direccion`,`Equipo_1`,`Equipo_2`),
+  ADD KEY `Equipo_1` (`Equipo_1`),
   ADD KEY `Equipo_2` (`Equipo_2`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `boleto`
+--
+ALTER TABLE `boleto`
+  MODIFY `ClvBoleto` int(10) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `direccion`
+--
+ALTER TABLE `direccion`
+  MODIFY `ClvLugar` int(10) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `equipo`
+--
+ALTER TABLE `equipo`
+  MODIFY `ClvEquipo` int(10) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `partidos`
+--
+ALTER TABLE `partidos`
+  MODIFY `ClvPartido` int(10) NOT NULL AUTO_INCREMENT;
 
 --
 -- Restricciones para tablas volcadas
@@ -120,15 +140,15 @@ ALTER TABLE `partido`
 -- Filtros para la tabla `boleto`
 --
 ALTER TABLE `boleto`
-  ADD CONSTRAINT `boleto_ibfk_1` FOREIGN KEY (`ClvPartido`) REFERENCES `partido` (`ClvPartido`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `boleto_ibfk_1` FOREIGN KEY (`ClvPartido`) REFERENCES `partidos` (`ClvPartido`) ON UPDATE CASCADE;
 
 --
--- Filtros para la tabla `partido`
+-- Filtros para la tabla `partidos`
 --
-ALTER TABLE `partido`
-  ADD CONSTRAINT `partido_ibfk_1` FOREIGN KEY (`Lugar`) REFERENCES `direccion` (`ClvLugar`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `partido_ibfk_2` FOREIGN KEY (`Equipo_1`) REFERENCES `equipo` (`ClvEquipo`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `partido_ibfk_3` FOREIGN KEY (`Equipo_2`) REFERENCES `equipo` (`ClvEquipo`) ON UPDATE CASCADE;
+ALTER TABLE `partidos`
+  ADD CONSTRAINT `partidos_ibfk_1` FOREIGN KEY (`direccion`) REFERENCES `direccion` (`ClvLugar`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `partidos_ibfk_2` FOREIGN KEY (`Equipo_1`) REFERENCES `equipo` (`ClvEquipo`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `partidos_ibfk_3` FOREIGN KEY (`Equipo_2`) REFERENCES `equipo` (`ClvEquipo`) ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
