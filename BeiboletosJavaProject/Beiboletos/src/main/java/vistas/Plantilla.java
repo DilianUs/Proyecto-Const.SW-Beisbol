@@ -5,23 +5,27 @@
 package vistas;
 
 import java.awt.BorderLayout;
+import javax.swing.JButton;
 import javax.swing.JPanel;
-import org.netbeans.lib.awtextra.AbsoluteConstraints;
+
 
 /**
  *
  * @author braul
  */
 public class Plantilla extends javax.swing.JFrame {
-
+   
     /**
      * Creates new form Plantilla
      */
     public Plantilla() {
         initComponents();
+        
+        
+        Inicio inicio = new Inicio();
+        showPanel(inicio);
              
     }
-  
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -32,140 +36,118 @@ public class Plantilla extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        panelMenu = new javax.swing.JPanel();
-        btnInicio = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        btnPartidos = new javax.swing.JButton();
-        btnEquipos = new javax.swing.JButton();
-        btnVentas = new javax.swing.JButton();
-        panelContDin = new javax.swing.JPanel();
+        Background = new javax.swing.JPanel();
+        Menu = new javax.swing.JPanel();
+        btn_Inicio = new javax.swing.JButton();
+        btn_Partidos = new javax.swing.JButton();
+        btn_Equipos = new javax.swing.JButton();
+        Title = new javax.swing.JPanel();
+        btn_Exit = new javax.swing.JButton();
+        content = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(1295, 720));
+        setMinimumSize(new java.awt.Dimension(1280, 720));
+        setPreferredSize(new java.awt.Dimension(1295, 720));
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        Background.setBackground(new java.awt.Color(255, 255, 255));
+        Background.setMaximumSize(new java.awt.Dimension(1280, 720));
+        Background.setMinimumSize(new java.awt.Dimension(1280, 720));
+        Background.setPreferredSize(new java.awt.Dimension(1280, 720));
+        Background.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        panelMenu.setBackground(new java.awt.Color(255, 255, 255));
+        Menu.setBackground(new java.awt.Color(51, 51, 255));
+        Menu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnInicio.setText("Inicio");
-        btnInicio.addActionListener(new java.awt.event.ActionListener() {
+        btn_Inicio.setIcon(new javax.swing.ImageIcon("C:\\Users\\braul\\Desktop\\proyectobeibol\\Proyecto-Const.SW-Beisbol\\BeiboletosJavaProject\\Beiboletos\\src\\main\\java\\vistas\\images\\home.png")); // NOI18N
+        btn_Inicio.setText("inicio");
+        btn_Inicio.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btn_Inicio.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btn_Inicio.setIconTextGap(10);
+        btn_Inicio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnInicioActionPerformed(evt);
+                btn_InicioActionPerformed(evt);
             }
         });
+        Menu.add(btn_Inicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 220, 50));
 
-        jLabel2.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel2.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel2.setText("Logo");
-
-        btnPartidos.setText("Partidos");
-        btnPartidos.addActionListener(new java.awt.event.ActionListener() {
+        btn_Partidos.setIcon(new javax.swing.ImageIcon("C:\\Users\\braul\\Desktop\\proyectobeibol\\Proyecto-Const.SW-Beisbol\\BeiboletosJavaProject\\Beiboletos\\src\\main\\java\\vistas\\images\\trophy.png")); // NOI18N
+        btn_Partidos.setText("Partidos");
+        btn_Partidos.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btn_Partidos.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btn_Partidos.setIconTextGap(10);
+        btn_Partidos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPartidosActionPerformed(evt);
+                btn_PartidosActionPerformed(evt);
             }
         });
+        Menu.add(btn_Partidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, 220, 50));
 
-        btnEquipos.setText("Equipos");
-        btnEquipos.addActionListener(new java.awt.event.ActionListener() {
+        btn_Equipos.setIcon(new javax.swing.ImageIcon("C:\\Users\\braul\\Desktop\\proyectobeibol\\Proyecto-Const.SW-Beisbol\\BeiboletosJavaProject\\Beiboletos\\src\\main\\java\\vistas\\images\\users.png")); // NOI18N
+        btn_Equipos.setText("Equipos");
+        btn_Equipos.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btn_Equipos.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btn_Equipos.setIconTextGap(10);
+        btn_Equipos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEquiposActionPerformed(evt);
+                btn_EquiposActionPerformed(evt);
             }
         });
+        Menu.add(btn_Equipos, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, 220, 50));
 
-        btnVentas.setText("Ventas");
+        Background.add(Menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 300, 720));
 
-        javax.swing.GroupLayout panelMenuLayout = new javax.swing.GroupLayout(panelMenu);
-        panelMenu.setLayout(panelMenuLayout);
-        panelMenuLayout.setHorizontalGroup(
-            panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelMenuLayout.createSequentialGroup()
-                .addGap(90, 90, 90)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(panelMenuLayout.createSequentialGroup()
-                .addGap(60, 60, 60)
-                .addComponent(btnInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(panelMenuLayout.createSequentialGroup()
-                .addGap(60, 60, 60)
-                .addComponent(btnPartidos, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(panelMenuLayout.createSequentialGroup()
-                .addGap(60, 60, 60)
-                .addComponent(btnEquipos, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(panelMenuLayout.createSequentialGroup()
-                .addGap(60, 60, 60)
-                .addComponent(btnVentas, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        panelMenuLayout.setVerticalGroup(
-            panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelMenuLayout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(60, 60, 60)
-                .addComponent(btnInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
-                .addComponent(btnPartidos, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
-                .addComponent(btnEquipos, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
-                .addComponent(btnVentas, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
+        Title.setBackground(null);
+        Title.setMaximumSize(new java.awt.Dimension(1270, 32));
+        Title.setMinimumSize(new java.awt.Dimension(1270, 32));
+        Title.setPreferredSize(new java.awt.Dimension(1270, 32));
+        Title.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        panelContDin.setPreferredSize(new java.awt.Dimension(883, 762));
+        btn_Exit.setIcon(new javax.swing.ImageIcon("C:\\Users\\braul\\Desktop\\proyectobeibol\\Proyecto-Const.SW-Beisbol\\BeiboletosJavaProject\\Beiboletos\\src\\main\\java\\vistas\\images\\x-circle.png")); // NOI18N
+        btn_Exit.setBorder(null);
+        Title.add(btn_Exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(1230, 0, 50, 30));
 
-        javax.swing.GroupLayout panelContDinLayout = new javax.swing.GroupLayout(panelContDin);
-        panelContDin.setLayout(panelContDinLayout);
-        panelContDinLayout.setHorizontalGroup(
-            panelContDinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 970, Short.MAX_VALUE)
-        );
-        panelContDinLayout.setVerticalGroup(
-            panelContDinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 762, Short.MAX_VALUE)
-        );
+        Background.add(Title, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 30));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(panelMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panelContDin, javax.swing.GroupLayout.DEFAULT_SIZE, 970, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(panelContDin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        content.setBackground(new java.awt.Color(255, 255, 255));
+        content.setMaximumSize(new java.awt.Dimension(980, 690));
+        content.setMinimumSize(new java.awt.Dimension(980, 690));
+        content.setLayout(new java.awt.GridLayout());
+        Background.add(content, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 30, 980, 690));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        getContentPane().add(Background, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnEquiposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEquiposActionPerformed
+    private void btn_PartidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_PartidosActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnEquiposActionPerformed
+        Partidos partidos = new Partidos();
+        showPanel(partidos);
+    }//GEN-LAST:event_btn_PartidosActionPerformed
 
-    private void btnInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicioActionPerformed
+    private void btn_InicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_InicioActionPerformed
         // TODO add your handling code here:
-        
-        
-    }//GEN-LAST:event_btnInicioActionPerformed
+        Inicio inicio = new Inicio();
+        showPanel(inicio);
+    }//GEN-LAST:event_btn_InicioActionPerformed
 
-    private void btnPartidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPartidosActionPerformed
+    private void btn_EquiposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_EquiposActionPerformed
         // TODO add your handling code here:
-        
-    }//GEN-LAST:event_btnPartidosActionPerformed
- 
+        Equipos equipos = new Equipos();
+        showPanel(equipos);
+    }//GEN-LAST:event_btn_EquiposActionPerformed
+   
+    private void showPanel(JPanel p){
+        p.setSize(980, 690);
+        p.setLocation(0, 0);
+        content.removeAll();
+        content.add(p, BorderLayout.CENTER);
+        content.revalidate();
+        content.repaint();
+    }
+
+  
    
     /**
      * @param args the command line arguments
@@ -203,13 +185,13 @@ public class Plantilla extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnEquipos;
-    private javax.swing.JButton btnInicio;
-    private javax.swing.JButton btnPartidos;
-    private javax.swing.JButton btnVentas;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel panelContDin;
-    private javax.swing.JPanel panelMenu;
+    private javax.swing.JPanel Background;
+    private javax.swing.JPanel Menu;
+    private javax.swing.JPanel Title;
+    private javax.swing.JButton btn_Equipos;
+    private javax.swing.JButton btn_Exit;
+    private javax.swing.JButton btn_Inicio;
+    private javax.swing.JButton btn_Partidos;
+    private javax.swing.JPanel content;
     // End of variables declaration//GEN-END:variables
 }
