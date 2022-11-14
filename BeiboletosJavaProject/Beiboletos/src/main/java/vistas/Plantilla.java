@@ -21,7 +21,6 @@ public class Plantilla extends javax.swing.JFrame {
     public Plantilla() {
         initComponents();
         
-        transparentButton(btn_Inicio);
         
         Inicio inicio = new Inicio();
         showPanel(inicio);
@@ -47,10 +46,9 @@ public class Plantilla extends javax.swing.JFrame {
         content = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1280, 720));
+        setMaximumSize(new java.awt.Dimension(1295, 720));
         setMinimumSize(new java.awt.Dimension(1280, 720));
-        setPreferredSize(new java.awt.Dimension(1280, 720));
-        getContentPane().setLayout(null);
+        setPreferredSize(new java.awt.Dimension(1295, 720));
 
         Background.setBackground(new java.awt.Color(255, 255, 255));
         Background.setMaximumSize(new java.awt.Dimension(1280, 720));
@@ -100,33 +98,24 @@ public class Plantilla extends javax.swing.JFrame {
         Background.add(Menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 300, 720));
 
         Title.setBackground(null);
+        Title.setMaximumSize(new java.awt.Dimension(1270, 32));
+        Title.setMinimumSize(new java.awt.Dimension(1270, 32));
+        Title.setPreferredSize(new java.awt.Dimension(1270, 32));
         Title.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btn_Exit.setIcon(new javax.swing.ImageIcon("C:\\Users\\braul\\Desktop\\proyectobeibol\\Proyecto-Const.SW-Beisbol\\BeiboletosJavaProject\\Beiboletos\\src\\main\\java\\vistas\\images\\x-circle.png")); // NOI18N
         btn_Exit.setBorder(null);
-        Title.add(btn_Exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(1220, 0, 50, 30));
+        Title.add(btn_Exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(1230, 0, 50, 30));
 
-        Background.add(Title, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1270, -1));
+        Background.add(Title, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 30));
 
         content.setBackground(new java.awt.Color(255, 255, 255));
         content.setMaximumSize(new java.awt.Dimension(980, 690));
         content.setMinimumSize(new java.awt.Dimension(980, 690));
-
-        javax.swing.GroupLayout contentLayout = new javax.swing.GroupLayout(content);
-        content.setLayout(contentLayout);
-        contentLayout.setHorizontalGroup(
-            contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 980, Short.MAX_VALUE)
-        );
-        contentLayout.setVerticalGroup(
-            contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 690, Short.MAX_VALUE)
-        );
-
+        content.setLayout(new java.awt.GridLayout());
         Background.add(content, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 30, 980, 690));
 
-        getContentPane().add(Background);
-        Background.setBounds(0, 0, 1280, 720);
+        getContentPane().add(Background, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -157,12 +146,8 @@ public class Plantilla extends javax.swing.JFrame {
         content.revalidate();
         content.repaint();
     }
-    
-    private void transparentButton(JButton b){
-        b.setOpaque(false);
-        b.setContentAreaFilled(false);
-        b.setBorderPainted(false);
-    }
+
+  
    
     /**
      * @param args the command line arguments
