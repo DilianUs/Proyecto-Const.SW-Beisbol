@@ -5,6 +5,8 @@
  */
 package Modelo;
 
+import ModelosD.Equipo;
+
 /**
  *
  * @author IGNITER

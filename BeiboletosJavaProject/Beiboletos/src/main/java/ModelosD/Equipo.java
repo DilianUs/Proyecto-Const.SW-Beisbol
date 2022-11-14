@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Modelo;
+package ModelosD;
 
 import java.awt.Image;
 
@@ -12,12 +12,12 @@ import java.awt.Image;
  * @author IGNITER
  */
 public class Equipo {
-    String nombreEquipo;
-    String claveEquipo;
-
-    public Equipo(String nombreEquipo, String claveEquipo) {
-        this.nombreEquipo = nombreEquipo;
+    private String claveEquipo;
+    private String nombreEquipo;
+    
+    public Equipo(String claveEquipo, String nombreEquipo) {
         this.claveEquipo = claveEquipo;
+        this.nombreEquipo = nombreEquipo;     
     }
 
     public String getClaveEquipo() {
@@ -35,6 +35,10 @@ public class Equipo {
     public void setClaveEquipo(String claveEquipo) {
         this.claveEquipo = claveEquipo;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return "Equipo{" + "claveEquipo=" + claveEquipo + ", nombreEquipo=" + nombreEquipo + '}';
+    }
+      
 }

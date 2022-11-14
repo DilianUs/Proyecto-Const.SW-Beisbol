@@ -97,7 +97,6 @@ public class Plantilla extends javax.swing.JFrame {
 
         Background.add(Menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 300, 720));
 
-        Title.setBackground(null);
         Title.setMaximumSize(new java.awt.Dimension(1270, 32));
         Title.setMinimumSize(new java.awt.Dimension(1270, 32));
         Title.setPreferredSize(new java.awt.Dimension(1270, 32));
@@ -112,7 +111,7 @@ public class Plantilla extends javax.swing.JFrame {
         content.setBackground(new java.awt.Color(255, 255, 255));
         content.setMaximumSize(new java.awt.Dimension(980, 690));
         content.setMinimumSize(new java.awt.Dimension(980, 690));
-        content.setLayout(new java.awt.GridLayout());
+        content.setLayout(new java.awt.GridLayout(1, 0));
         Background.add(content, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 30, 980, 690));
 
         getContentPane().add(Background, java.awt.BorderLayout.CENTER);

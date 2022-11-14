@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-11-2022 a las 07:32:20
+-- Tiempo de generación: 13-11-2022 a las 19:58:15
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.6
 
@@ -35,19 +35,6 @@ CREATE TABLE `boleto` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `direccion`
---
-
-CREATE TABLE `direccion` (
-  `ClvLugar` int(10) NOT NULL,
-  `NombreLugar` varchar(30) NOT NULL,
-  `Calle` int(11) NOT NULL,
-  `Numero` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `equipo`
 --
 
@@ -64,7 +51,7 @@ CREATE TABLE `equipo` (
 
 CREATE TABLE `partidos` (
   `ClvPartido` int(10) NOT NULL,
-  `direccion` int(10) NOT NULL,
+  `direccion` varchar(30) NOT NULL,
   `Equipo_1` int(10) NOT NULL,
   `Equipo_2` int(10) NOT NULL,
   `Hora` int(2) NOT NULL,
@@ -84,12 +71,6 @@ ALTER TABLE `boleto`
   ADD UNIQUE KEY `ClvPartido` (`ClvPartido`);
 
 --
--- Indices de la tabla `direccion`
---
-ALTER TABLE `direccion`
-  ADD PRIMARY KEY (`ClvLugar`);
-
---
 -- Indices de la tabla `equipo`
 --
 ALTER TABLE `equipo`
@@ -100,8 +81,7 @@ ALTER TABLE `equipo`
 --
 ALTER TABLE `partidos`
   ADD PRIMARY KEY (`ClvPartido`),
-  ADD UNIQUE KEY `direccion` (`direccion`,`Equipo_1`,`Equipo_2`),
-  ADD KEY `Equipo_1` (`Equipo_1`),
+  ADD UNIQUE KEY `Equipo_1` (`Equipo_1`,`Equipo_2`),
   ADD KEY `Equipo_2` (`Equipo_2`);
 
 --
@@ -113,12 +93,6 @@ ALTER TABLE `partidos`
 --
 ALTER TABLE `boleto`
   MODIFY `ClvBoleto` int(10) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `direccion`
---
-ALTER TABLE `direccion`
-  MODIFY `ClvLugar` int(10) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `equipo`
@@ -146,9 +120,8 @@ ALTER TABLE `boleto`
 -- Filtros para la tabla `partidos`
 --
 ALTER TABLE `partidos`
-  ADD CONSTRAINT `partidos_ibfk_1` FOREIGN KEY (`direccion`) REFERENCES `direccion` (`ClvLugar`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `partidos_ibfk_2` FOREIGN KEY (`Equipo_1`) REFERENCES `equipo` (`ClvEquipo`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `partidos_ibfk_3` FOREIGN KEY (`Equipo_2`) REFERENCES `equipo` (`ClvEquipo`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `partidos_ibfk_1` FOREIGN KEY (`Equipo_1`) REFERENCES `equipo` (`ClvEquipo`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `partidos_ibfk_2` FOREIGN KEY (`Equipo_2`) REFERENCES `equipo` (`ClvEquipo`) ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -4,6 +4,11 @@
  */
 package vistas;
 
+import Conexion.EquipoDAO;
+import ModelosD.Equipo;
+import javax.swing.JButton;
+import javax.swing.JTextField;
+
 /**
  *
  * @author braul
@@ -29,9 +34,9 @@ public class Equipos extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
+        input_Nequipo = new javax.swing.JTextField();
+        btn_AgregarEquipo = new javax.swing.JButton();
+        input_ClaveEquipo = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(980, 690));
@@ -61,33 +66,51 @@ public class Equipos extends javax.swing.JPanel {
         jLabel2.setText("Agregar equipo");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 490, -1, -1));
 
-        jTextField1.setText("Nombre del equipo");
-        add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 570, 160, 30));
+        input_Nequipo.setText("Nombre del equipo");
+        add(input_Nequipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 570, 160, 30));
 
-        jButton1.setText("Agregar");
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 570, -1, -1));
+        btn_AgregarEquipo.setText("Agregar");
+        btn_AgregarEquipo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_AgregarEquipoActionPerformed(evt);
+            }
+        });
+        add(btn_AgregarEquipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 570, -1, -1));
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 150, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 120, Short.MAX_VALUE)
-        );
-
-        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 520, 150, 120));
+        input_ClaveEquipo.setText("Clave de equipo");
+        add(input_ClaveEquipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 570, 130, 30));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btn_AgregarEquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AgregarEquipoActionPerformed
+        // TODO add your handling code here:
+        String nombreEquipo=getInput_Nequipo().getText();
+        String claveEquipo = getInput_ClaveEquipo().getText();
+        Equipo nuevoEquipo = new Equipo(nombreEquipo, claveEquipo);
+        EquipoDAO equipoDAO = new EquipoDAO();
+        equipoDAO.agregarEquipo(nuevoEquipo);
+        System.out.println("Hola mundo");
+    }//GEN-LAST:event_btn_AgregarEquipoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btn_AgregarEquipo;
+    private javax.swing.JTextField input_ClaveEquipo;
+    private javax.swing.JTextField input_Nequipo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
+
+    public JButton getBtn_AgregarEquipo() {
+        return btn_AgregarEquipo;
+    }
+
+    public JTextField getInput_ClaveEquipo() {
+        return input_ClaveEquipo;
+    }
+
+    public JTextField getInput_Nequipo() {
+        return input_Nequipo;
+    }
+    
 }
