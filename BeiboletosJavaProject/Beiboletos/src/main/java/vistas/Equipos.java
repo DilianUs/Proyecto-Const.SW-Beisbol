@@ -9,6 +9,7 @@ import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import mysqlImplements.DAOException;
+import mysqlImplements.MySQLDaoManager;
 import mysqlImplements.MySQLEquipoDAO;
 
 /**
@@ -88,12 +89,15 @@ public class Equipos extends javax.swing.JPanel {
         String nombreEquipo=getInput_Nequipo().getText();
         String claveEquipo = getInput_ClaveEquipo().getText();
         Equipo nuevoEquipo = new Equipo(claveEquipo, nombreEquipo);
-        MySQLEquipoDAO equipoDAO = new MySQLEquipoDAO();
+        MySQLDaoManager manager = new MySQLDaoManager();
+        
         try {
-            equipoDAO.agregar(nuevoEquipo);
+            manager.getEquipoDAO().agregar(nuevoEquipo);
         } catch (DAOException ex) {
             Logger.getLogger(Equipos.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        
         System.out.println("Hola mundo");
     }//GEN-LAST:event_btn_AgregarEquipoActionPerformed
 
