@@ -4,6 +4,12 @@
  */
 package vistas;
 
+import ModelosD.Boleto;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import mysqlImplements.DAOException;
+import mysqlImplements.MySQLBoletoDAO;
+
 /**
  *
  * @author braul
@@ -15,6 +21,8 @@ public class Inicio extends javax.swing.JPanel {
      */
     public Inicio() {
         initComponents();
+        cb_Partidos.removeAllItems();
+        cb_Partidos.addItem("87");
     }
 
     /**
@@ -26,19 +34,47 @@ public class Inicio extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        cb_Partidos = new javax.swing.JComboBox<>();
+        input_ClvBoleto = new javax.swing.JTextField();
+        btn_GenerarBoleto = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(204, 0, 51));
         setMaximumSize(new java.awt.Dimension(980, 690));
         setMinimumSize(new java.awt.Dimension(980, 690));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setText("hola prueba");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 240, -1, -1));
+        cb_Partidos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        add(cb_Partidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 230, 110, 30));
+
+        input_ClvBoleto.setText("Clave del boleto");
+        add(input_ClvBoleto, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 230, -1, -1));
+
+        btn_GenerarBoleto.setText("Generar Boleto");
+        btn_GenerarBoleto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_GenerarBoletoActionPerformed(evt);
+            }
+        });
+        add(btn_GenerarBoleto, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 400, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btn_GenerarBoletoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_GenerarBoletoActionPerformed
+        // TODO add your handling code here:
+        int clave = Integer.parseInt(input_ClvBoleto.getText());
+        int partido=Integer.parseInt(cb_Partidos.getSelectedItem().toString());
+        Boleto nuevoBoleto = new Boleto(clave, partido);
+        MySQLBoletoDAO boletoDAO = new MySQLBoletoDAO();
+        try {
+            boletoDAO.agregar(nuevoBoleto);
+        } catch (DAOException ex) {
+            Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btn_GenerarBoletoActionPerformed
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton btn_GenerarBoleto;
+    private javax.swing.JComboBox<String> cb_Partidos;
+    private javax.swing.JTextField input_ClvBoleto;
     // End of variables declaration//GEN-END:variables
 }

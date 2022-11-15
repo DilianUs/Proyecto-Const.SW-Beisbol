@@ -13,18 +13,17 @@ import javax.swing.JPanel;
  *
  * @author braul
  */
-public class Plantilla extends javax.swing.JFrame {
+public class vistaPrincipal extends javax.swing.JFrame {
    
+     Partidos partidos = new Partidos();
+     Inicio inicio = new Inicio();
+     Equipos equipos = new Equipos();
     /**
      * Creates new form Plantilla
      */
-    public Plantilla() {
+    public vistaPrincipal() {
         initComponents();
-        
-        
-        Inicio inicio = new Inicio();
-        showPanel(inicio);
-             
+        showPanel(inicio);           
     }
 
     /**
@@ -46,9 +45,7 @@ public class Plantilla extends javax.swing.JFrame {
         content = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1295, 720));
         setMinimumSize(new java.awt.Dimension(1280, 720));
-        setPreferredSize(new java.awt.Dimension(1295, 720));
 
         Background.setBackground(new java.awt.Color(255, 255, 255));
         Background.setMaximumSize(new java.awt.Dimension(1280, 720));
@@ -121,19 +118,19 @@ public class Plantilla extends javax.swing.JFrame {
 
     private void btn_PartidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_PartidosActionPerformed
         // TODO add your handling code here:
-        Partidos partidos = new Partidos();
+       
         showPanel(partidos);
     }//GEN-LAST:event_btn_PartidosActionPerformed
 
     private void btn_InicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_InicioActionPerformed
         // TODO add your handling code here:
-        Inicio inicio = new Inicio();
+        
         showPanel(inicio);
     }//GEN-LAST:event_btn_InicioActionPerformed
 
     private void btn_EquiposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_EquiposActionPerformed
         // TODO add your handling code here:
-        Equipos equipos = new Equipos();
+      
         showPanel(equipos);
     }//GEN-LAST:event_btn_EquiposActionPerformed
    
@@ -165,20 +162,21 @@ public class Plantilla extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Plantilla.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(vistaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Plantilla.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(vistaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Plantilla.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(vistaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Plantilla.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(vistaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Plantilla().setVisible(true);
+                new vistaPrincipal().setVisible(true);
             }
         });
     }

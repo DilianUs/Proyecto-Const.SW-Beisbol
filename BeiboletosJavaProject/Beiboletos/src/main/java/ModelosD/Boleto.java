@@ -2,11 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.Modelo;
+package ModelosD;
 
 /**
  *
- * @author allen
+ * @author braul
  */
 public class Boleto {
     private int ClvBoleto;
@@ -16,8 +16,6 @@ public class Boleto {
         this.ClvBoleto = ClvBoleto;
         this.ClvPartido = ClvPartido;
     }
-    
-    public Boleto(){}
 
     public int getClvBoleto() {
         return ClvBoleto;
@@ -34,7 +32,11 @@ public class Boleto {
     public void setClvPartido(int ClvPartido) {
         this.ClvPartido = ClvPartido;
     }
-    
+
+    @Override
+    public String toString() {
+        return "Boleto{" + "ClvBoleto=" + ClvBoleto + ", ClvPartido=" + ClvPartido + '}';
+    }
     
     
 }
