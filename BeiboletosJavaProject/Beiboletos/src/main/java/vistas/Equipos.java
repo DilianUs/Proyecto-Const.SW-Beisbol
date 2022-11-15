@@ -3,11 +3,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package vistas;
-
-import Conexion.EquipoDAO;
 import ModelosD.Equipo;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JTextField;
+import mysqlImplements.DAOException;
+import mysqlImplements.MySQLEquipoDAO;
 
 /**
  *
@@ -85,9 +87,13 @@ public class Equipos extends javax.swing.JPanel {
         // TODO add your handling code here:
         String nombreEquipo=getInput_Nequipo().getText();
         String claveEquipo = getInput_ClaveEquipo().getText();
-        Equipo nuevoEquipo = new Equipo(nombreEquipo, claveEquipo);
-        EquipoDAO equipoDAO = new EquipoDAO();
-        equipoDAO.agregarEquipo(nuevoEquipo);
+        Equipo nuevoEquipo = new Equipo(claveEquipo, nombreEquipo);
+        MySQLEquipoDAO equipoDAO = new MySQLEquipoDAO();
+        try {
+            equipoDAO.agregar(nuevoEquipo);
+        } catch (DAOException ex) {
+            Logger.getLogger(Equipos.class.getName()).log(Level.SEVERE, null, ex);
+        }
         System.out.println("Hola mundo");
     }//GEN-LAST:event_btn_AgregarEquipoActionPerformed
 
