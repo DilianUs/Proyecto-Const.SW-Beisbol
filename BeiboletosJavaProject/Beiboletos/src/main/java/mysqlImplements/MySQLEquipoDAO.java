@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package mysqlImplements;
 
 
@@ -56,6 +53,7 @@ public class MySQLEquipoDAO implements EquipoDAO{
         try {
             statement = jdbc.conectar().prepareStatement(DELETE);
             statement.setString(1,e.getClaveEquipo());
+           
             if(statement.executeUpdate()==0){
                 throw new DAOException("No se pudo eliminar");
             }
@@ -74,8 +72,27 @@ public class MySQLEquipoDAO implements EquipoDAO{
     }
 
     @Override
-    public void modificar(Equipo e) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void modificar(Equipo e)throws DAOException{
+       PreparedStatement statement=null;
+        try {
+            statement = jdbc.conectar().prepareStatement(UPDATE);
+            statement.setString(1,e.getNombreEquipo());
+            statement.setString(2, e.getClaveEquipo());
+            if(statement.executeUpdate()==0){
+                throw new DAOException("No se pudo eliminar");
+            }
+            
+        } catch (SQLException ex) {
+            throw new DAOException("Error en SQL",ex);
+        }finally{
+            if(statement!=null){
+                try {
+                    statement.close();
+                } catch (SQLException ex) {
+                    throw new DAOException("Error SQL",ex);
+                }
+            }
+        } 
     }
     @Override
     public void obtener(Long id) {

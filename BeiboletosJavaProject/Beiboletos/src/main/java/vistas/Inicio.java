@@ -8,7 +8,7 @@ import ModelosD.Boleto;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import mysqlImplements.DAOException;
-import mysqlImplements.MySQLBoletoDAO;
+import mysqlImplements.MySQLDaoManager;
 
 /**
  *
@@ -63,12 +63,14 @@ public class Inicio extends javax.swing.JPanel {
         int clave = Integer.parseInt(input_ClvBoleto.getText());
         int partido=Integer.parseInt(cb_Partidos.getSelectedItem().toString());
         Boleto nuevoBoleto = new Boleto(clave, partido);
-        MySQLBoletoDAO boletoDAO = new MySQLBoletoDAO();
+        MySQLDaoManager manager = new MySQLDaoManager();
         try {
-            boletoDAO.agregar(nuevoBoleto);
+            manager.getBoletoDAO().agregar(nuevoBoleto);
         } catch (DAOException ex) {
             Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        
     }//GEN-LAST:event_btn_GenerarBoletoActionPerformed
     
 

@@ -8,7 +8,8 @@ import ModelosD.Partido;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import mysqlImplements.DAOException;
-import mysqlImplements.MySQLPartidoDAO;
+import mysqlImplements.MySQLDaoManager;
+
 
 /**
  *
@@ -124,12 +125,13 @@ public class Partidos extends javax.swing.JPanel {
          int Dia = Integer.parseInt(cb_Dia.getSelectedItem().toString());
           int mes = Integer.parseInt(cb_Mes.getSelectedItem().toString());
           Partido nuevoPartido=new Partido(clave, lugar, equipoU, equipoD, hora, Dia, mes);
-          MySQLPartidoDAO partidoDAO = new MySQLPartidoDAO();
+          MySQLDaoManager manager = new MySQLDaoManager();
         try {
-            partidoDAO.agregar(nuevoPartido);
+            manager.getPartidoDAO().agregar(nuevoPartido);
         } catch (DAOException ex) {
             Logger.getLogger(Partidos.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        } 
+          
     }//GEN-LAST:event_btn_crearPartidoActionPerformed
     public void setMeses(){
         int cantidadMeses=12;

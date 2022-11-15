@@ -52,12 +52,48 @@ public class MySQLPartidoDAO implements PartidoDAO{
 
     @Override
     public void eliminar(Partido e) throws DAOException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+                PreparedStatement statement=null;
+        try {
+            statement = jdbc.conectar().prepareStatement(DELETE);
+            statement.setInt(2, e.getClvPartido());
+            if(statement.executeUpdate()==0){
+                throw new DAOException("No se pudo eliminar");
+            }
+            
+        } catch (SQLException ex) {
+            throw new DAOException("Error en SQL",ex);
+        }finally{
+            if(statement!=null){
+                try {
+                    statement.close();
+                } catch (SQLException ex) {
+                    throw new DAOException("Error SQL",ex);
+                }
+            }
+        }
     }
 
     @Override
     public void modificar(Partido e) throws DAOException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+               PreparedStatement statement=null;
+        try {
+            statement = jdbc.conectar().prepareStatement(UPDATE);
+            
+            if(statement.executeUpdate()==0){
+                throw new DAOException("No se pudo eliminar");
+            }
+            
+        } catch (SQLException ex) {
+            throw new DAOException("Error en SQL",ex);
+        }finally{
+            if(statement!=null){
+                try {
+                    statement.close();
+                } catch (SQLException ex) {
+                    throw new DAOException("Error SQL",ex);
+                }
+            }
+        } 
     }
 
     @Override
