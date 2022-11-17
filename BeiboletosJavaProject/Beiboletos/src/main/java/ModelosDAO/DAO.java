@@ -18,7 +18,7 @@ public interface DAO<Objeto,Tipo> {
     void agregar(Objeto e) throws DAOException;
     void eliminar(Objeto e)throws DAOException;
     void modificar(Objeto e)throws DAOException;
-    void obtener(Tipo id)throws DAOException;
+    Objeto obtener(Tipo id)throws DAOException;
     List<Objeto> obtenerTodos()throws DAOException;
     
 }

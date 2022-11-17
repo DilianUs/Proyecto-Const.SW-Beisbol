@@ -1,6 +1,7 @@
 
 package vistas;
 import ModelosD.Equipo;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JButton;
@@ -37,6 +38,7 @@ public class Equipos extends javax.swing.JPanel {
         input_Nequipo = new javax.swing.JTextField();
         btn_AgregarEquipo = new javax.swing.JButton();
         input_ClaveEquipo = new javax.swing.JTextField();
+        btn_ObtenerTodos = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(980, 690));
@@ -79,6 +81,14 @@ public class Equipos extends javax.swing.JPanel {
 
         input_ClaveEquipo.setText("Clave de equipo");
         add(input_ClaveEquipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 570, 130, 30));
+
+        btn_ObtenerTodos.setText("VerEquipos");
+        btn_ObtenerTodos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_ObtenerTodosActionPerformed(evt);
+            }
+        });
+        add(btn_ObtenerTodos, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 200, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_AgregarEquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AgregarEquipoActionPerformed
@@ -98,9 +108,25 @@ public class Equipos extends javax.swing.JPanel {
         System.out.println("Hola mundo");
     }//GEN-LAST:event_btn_AgregarEquipoActionPerformed
 
+    private void btn_ObtenerTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ObtenerTodosActionPerformed
+        // TODO add your handling code here:
+     
+        try {
+            MySQLDaoManager manager = new MySQLDaoManager();
+            List<Equipo> equipoObtenidos = manager.getEquipoDAO().obtenerTodos();
+            for(Equipo e: equipoObtenidos){
+                System.out.println(e.toString());
+            }
+        } catch (DAOException ex) {
+            Logger.getLogger(Equipos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_btn_ObtenerTodosActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_AgregarEquipo;
+    private javax.swing.JButton btn_ObtenerTodos;
     private javax.swing.JTextField input_ClaveEquipo;
     private javax.swing.JTextField input_Nequipo;
     private javax.swing.JLabel jLabel1;

@@ -55,7 +55,7 @@ public class MySQLBoletoDAO implements BoletoDAO{
     }
 
     @Override
-    public void obtener(Long id) throws DAOException {
+    public Boleto obtener(Long id) throws DAOException {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 

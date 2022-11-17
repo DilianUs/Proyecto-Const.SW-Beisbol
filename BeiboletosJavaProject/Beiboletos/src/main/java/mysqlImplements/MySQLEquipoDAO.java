@@ -8,6 +8,7 @@ import com.mysql.cj.xdevapi.PreparableStatement;
 import java.util.List;
 import java.sql.SQLException;
 import java.sql.*;
+import java.util.ArrayList;
 
 /**
  *
@@ -94,14 +95,81 @@ public class MySQLEquipoDAO implements EquipoDAO{
             }
         } 
     }
+    
+    private Equipo convertir(ResultSet rs) throws SQLException{
+        String claveEquipo = rs.getString("ClvEquipo");
+        String nombreEquipo = rs.getString("NombreEquipo");
+        Equipo equipo = new Equipo(claveEquipo, nombreEquipo);
+        return equipo;
+        
+    }
     @Override
-    public void obtener(Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public Equipo obtener(String id) throws DAOException{
+        PreparedStatement statement=null;
+        ResultSet rs =null;
+        Equipo equipoEncontrado=null;
+        try {
+            statement = jdbc.conectar().prepareStatement(GETONE);
+            statement.setString(1, id);
+            rs = statement.executeQuery();
+            
+            if(rs.next()){
+                equipoEncontrado = convertir(rs);
+            }else{
+                throw new DAOException("No se ha encontrado ese registro");
+            }
+            
+        } catch (SQLException ex) {
+            throw new DAOException("Error en SQL",ex);
+        }finally{
+            if(rs !=null){
+                try {
+                    rs.close();
+                } catch (SQLException ex) {
+                    new DAOException("Error en SQL",ex);
+                }
+            }
+            if(statement != null){
+                try {
+                    statement.close();
+                } catch (SQLException ex) {
+                    new DAOException("Error en SQL",ex);
+                }
+            }
+        }
+        return equipoEncontrado;
     }
 
     @Override
-    public List<Equipo> obtenerTodos() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public List<Equipo> obtenerTodos() throws DAOException{
+        PreparedStatement statement=null;
+        ResultSet rs =null;
+        List<Equipo> equiposEncontrados= new ArrayList<>();
+        try {
+            statement = jdbc.conectar().prepareStatement(GETALL);
+            rs = statement.executeQuery();
+            while(rs.next()){
+                equiposEncontrados.add(convertir(rs));
+            }      
+        } catch (SQLException ex) {
+            throw new DAOException("Error en SQL",ex);
+        }finally{
+            if(rs !=null){
+                try {
+                    rs.close();
+                } catch (SQLException ex) {
+                    new DAOException("Error en SQL",ex);
+                }
+            }
+            if(statement != null){
+                try {
+                    statement.close();
+                } catch (SQLException ex) {
+                    new DAOException("Error en SQL",ex);
+                }
+            }
+        }
+        return equiposEncontrados;
     }
     
 }

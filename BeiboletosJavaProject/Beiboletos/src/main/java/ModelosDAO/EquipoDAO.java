@@ -12,7 +12,7 @@ import java.util.List;
  *
  * @author braul
  */
-public interface EquipoDAO extends DAO<Equipo, Long>{
+public interface EquipoDAO extends DAO<Equipo, String>{
     
  
     

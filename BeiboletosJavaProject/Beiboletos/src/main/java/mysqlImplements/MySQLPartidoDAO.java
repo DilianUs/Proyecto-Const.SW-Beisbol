@@ -97,7 +97,7 @@ public class MySQLPartidoDAO implements PartidoDAO{
     }
 
     @Override
-    public void obtener(Long id) throws DAOException {
+    public Partido obtener(Long id) throws DAOException {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
