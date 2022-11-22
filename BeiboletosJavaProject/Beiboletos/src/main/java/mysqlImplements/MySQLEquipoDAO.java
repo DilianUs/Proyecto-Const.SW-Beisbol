@@ -80,7 +80,7 @@ public class MySQLEquipoDAO implements EquipoDAO{
             statement.setString(1,e.getNombreEquipo());
             statement.setString(2, e.getClaveEquipo());
             if(statement.executeUpdate()==0){
-                throw new DAOException("No se pudo eliminar");
+                throw new DAOException("No se pudo modificar");
             }
             
         } catch (SQLException ex) {

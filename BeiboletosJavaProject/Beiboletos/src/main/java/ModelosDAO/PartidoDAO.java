@@ -10,6 +10,6 @@ import ModelosD.Partido;
  *
  * @author braul
  */
-public interface PartidoDAO extends DAO<Partido, Long>{
+public interface PartidoDAO extends DAO<Partido, Integer>{
     
 }

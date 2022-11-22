@@ -10,6 +10,6 @@ import ModelosD.Boleto;
  *
  * @author braul
  */
-public interface BoletoDAO extends DAO<Boleto, Long>{
+public interface BoletoDAO extends DAO<Boleto, Integer>{
     
 }
