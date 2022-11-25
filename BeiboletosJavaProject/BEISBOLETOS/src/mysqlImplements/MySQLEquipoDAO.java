@@ -20,7 +20,7 @@ public class MySQLEquipoDAO implements EquipoDAO{
     final String DELETE="DELETE FROM equipo WHERE ClvEquipo=?";
     final String UPDATE="UPDATE equipo SET NombreEquipo=? WHERE ClvEquipo=?";
     final String GETALL="SELECT ClvEquipo,NombreEquipo FROM equipo";
-    final String GETONE="SELECT ClvEquipo,NombreEquipo WHERE ClvEquipo=?";
+    final String GETONE="SELECT ClvEquipo,NombreEquipo FROM equipo WHERE ClvEquipo=?";
     
     @Override
     public void agregar(Equipo e) throws DAOException{
@@ -28,7 +28,7 @@ public class MySQLEquipoDAO implements EquipoDAO{
        PreparedStatement statement=null;
         try {
            statement = jdbc.conectar().prepareStatement(INSERT);
-           statement.setString(1, e.getClaveEquipo());
+           statement.setInt(1, e.getClaveEquipo());
            statement.setString(2, e.getNombreEquipo());
            if(statement.executeUpdate()==0){
                throw new DAOException("No se pudo guardar");
@@ -40,6 +40,7 @@ public class MySQLEquipoDAO implements EquipoDAO{
             if(statement != null){
                 try {
                   statement.close();
+               
                 } catch (SQLException ex) {
                     throw new DAOException("Error en SQL", ex);
                 }
@@ -53,7 +54,7 @@ public class MySQLEquipoDAO implements EquipoDAO{
         PreparedStatement statement=null;
         try {
             statement = jdbc.conectar().prepareStatement(DELETE);
-            statement.setString(1,e.getClaveEquipo());
+            statement.setInt(1,e.getClaveEquipo());
            
             if(statement.executeUpdate()==0){
                 throw new DAOException("No se pudo eliminar");
@@ -65,6 +66,7 @@ public class MySQLEquipoDAO implements EquipoDAO{
             if(statement!=null){
                 try {
                     statement.close();
+                   
                 } catch (SQLException ex) {
                     throw new DAOException("Error SQL",ex);
                 }
@@ -78,7 +80,7 @@ public class MySQLEquipoDAO implements EquipoDAO{
         try {
             statement = jdbc.conectar().prepareStatement(UPDATE);
             statement.setString(1,e.getNombreEquipo());
-            statement.setString(2, e.getClaveEquipo());
+            statement.setInt(2, e.getClaveEquipo());
             if(statement.executeUpdate()==0){
                 throw new DAOException("No se pudo modificar");
             }
@@ -89,6 +91,7 @@ public class MySQLEquipoDAO implements EquipoDAO{
             if(statement!=null){
                 try {
                     statement.close();
+                    
                 } catch (SQLException ex) {
                     throw new DAOException("Error SQL",ex);
                 }
@@ -97,26 +100,27 @@ public class MySQLEquipoDAO implements EquipoDAO{
     }
     
     private Equipo convertir(ResultSet rs) throws SQLException{
-        String claveEquipo = rs.getString("ClvEquipo");
+        int claveEquipo = rs.getInt("ClvEquipo");
         String nombreEquipo = rs.getString("NombreEquipo");
         Equipo equipo = new Equipo(claveEquipo, nombreEquipo);
         return equipo;
         
     }
     @Override
-    public Equipo obtener(String id) throws DAOException{
+    public Equipo obtener(Integer id) throws DAOException{
         PreparedStatement statement=null;
         ResultSet rs =null;
         Equipo equipoEncontrado=null;
         try {
             statement = jdbc.conectar().prepareStatement(GETONE);
-            statement.setString(1, id);
+            statement.setInt(1, id);
             rs = statement.executeQuery();
             
             if(rs.next()){
                 equipoEncontrado = convertir(rs);
             }else{
-                throw new DAOException("No se ha encontrado ese registro");
+                System.out.println("No se encuentra el elemento en la base de datos");
+                equipoEncontrado=null;
             }
             
         } catch (SQLException ex) {
@@ -125,6 +129,7 @@ public class MySQLEquipoDAO implements EquipoDAO{
             if(rs !=null){
                 try {
                     rs.close();
+                   
                 } catch (SQLException ex) {
                     new DAOException("Error en SQL",ex);
                 }
@@ -132,6 +137,7 @@ public class MySQLEquipoDAO implements EquipoDAO{
             if(statement != null){
                 try {
                     statement.close();
+                    
                 } catch (SQLException ex) {
                     new DAOException("Error en SQL",ex);
                 }
@@ -164,6 +170,7 @@ public class MySQLEquipoDAO implements EquipoDAO{
             if(statement != null){
                 try {
                     statement.close();
+                    
                 } catch (SQLException ex) {
                     new DAOException("Error en SQL",ex);
                 }
