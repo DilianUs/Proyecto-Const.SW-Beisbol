@@ -17,14 +17,14 @@ public class Partido {
     private int Dia;
     private int Mes;
 
-    public Partido(int ClvPartido, String Lugar, int Equipo_Uno, int Equipo_Dos, int Hora, int Dia, int Mes) {
-        this.ClvPartido = ClvPartido;
-        this.Lugar = Lugar;
-        this.Equipo_Uno = Equipo_Uno;
-        this.Equipo_Dos = Equipo_Dos;
-        this.Hora = Hora;
-        this.Dia = Dia;
-        this.Mes = Mes;
+    public Partido() {
+        this.ClvPartido = 0;
+        this.Lugar = "";
+        this.Equipo_Uno = 0;
+        this.Equipo_Dos = 0;
+        this.Hora = 0;
+        this.Dia = 0;
+        this.Mes = 0;
     }
 
     public int getClvPartido() {

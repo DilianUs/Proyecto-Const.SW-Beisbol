@@ -12,9 +12,9 @@ public class Boleto {
     private int ClvBoleto;
     private int ClvPartido;
 
-    public Boleto(int ClvBoleto, int ClvPartido) {
-        this.ClvBoleto = ClvBoleto;
-        this.ClvPartido = ClvPartido;
+    public Boleto() {
+        this.ClvBoleto = 0;
+        this.ClvPartido = 0;
     }
 
     public int getClvBoleto() {
