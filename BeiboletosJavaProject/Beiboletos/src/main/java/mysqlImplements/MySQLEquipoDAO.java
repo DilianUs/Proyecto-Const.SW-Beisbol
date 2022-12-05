@@ -27,7 +27,7 @@ public class MySQLEquipoDAO implements EquipoDAO{
        PreparedStatement statement=null;
         try {
            statement = jdbc.conectar().prepareStatement(INSERT);
-           statement.setString(1, e.getClaveEquipo());
+           statement.setInt(1, e.getClaveEquipo());
            statement.setString(2, e.getNombreEquipo());
            if(statement.executeUpdate()==0){
                throw new DAOException("No se pudo guardar");
@@ -52,7 +52,7 @@ public class MySQLEquipoDAO implements EquipoDAO{
         PreparedStatement statement=null;
         try {
             statement = jdbc.conectar().prepareStatement(DELETE);
-            statement.setString(1,e.getClaveEquipo());
+            statement.setInt(1,e.getClaveEquipo());
            
             if(statement.executeUpdate()==0){
                 throw new DAOException("No se pudo eliminar");
@@ -77,7 +77,7 @@ public class MySQLEquipoDAO implements EquipoDAO{
         try {
             statement = jdbc.conectar().prepareStatement(UPDATE);
             statement.setString(1,e.getNombreEquipo());
-            statement.setString(2, e.getClaveEquipo());
+            statement.setInt(2, e.getClaveEquipo());
             if(statement.executeUpdate()==0){
                 throw new DAOException("No se pudo eliminar");
             }

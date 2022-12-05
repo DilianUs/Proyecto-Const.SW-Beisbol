@@ -12,15 +12,15 @@ import java.awt.Image;
  * @author IGNITER
  */
 public class Equipo {
-    private String claveEquipo;
+    private int claveEquipo;
     private String nombreEquipo;
     
-    public Equipo(String claveEquipo, String nombreEquipo) {
+    public Equipo(int claveEquipo, String nombreEquipo) {
         this.claveEquipo = claveEquipo;
         this.nombreEquipo = nombreEquipo;     
     }
 
-    public String getClaveEquipo() {
+    public int getClaveEquipo() {
         return claveEquipo;
     }
 
@@ -32,7 +32,7 @@ public class Equipo {
         this.nombreEquipo = nombreEquipo;
     }
 
-    public void setClaveEquipo(String claveEquipo) {
+    public void setClaveEquipo(int claveEquipo) {
         this.claveEquipo = claveEquipo;
     }
 

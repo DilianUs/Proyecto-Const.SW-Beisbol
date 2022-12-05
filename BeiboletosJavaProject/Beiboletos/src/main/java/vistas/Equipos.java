@@ -84,7 +84,7 @@ public class Equipos extends javax.swing.JPanel {
     private void btn_AgregarEquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AgregarEquipoActionPerformed
         // TODO add your handling code here:
         String nombreEquipo=getInput_Nequipo().getText();
-        String claveEquipo = getInput_ClaveEquipo().getText();
+        int claveEquipo = Integer.parseInt( getInput_ClaveEquipo().getText());
         Equipo nuevoEquipo = new Equipo(claveEquipo, nombreEquipo);
         MySQLDaoManager manager = new MySQLDaoManager();
         
