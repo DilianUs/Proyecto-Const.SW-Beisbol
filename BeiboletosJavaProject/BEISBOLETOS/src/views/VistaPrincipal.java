@@ -1,10 +1,5 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-package vistas;
+package views;
 
-import java.awt.BorderLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
@@ -13,17 +8,15 @@ import javax.swing.JPanel;
  *
  * @author braul
  */
-public class vistaPrincipal extends javax.swing.JFrame {
+public class VistaPrincipal extends javax.swing.JFrame {
    
-     Partidos partidos = new Partidos();
-     Inicio inicio = new Inicio();
-     Equipos equipos = new Equipos();
+
     /**
      * Creates new form Plantilla
      */
-    public vistaPrincipal() {
+    public VistaPrincipal() {
         initComponents();
-        showPanel(inicio);           
+                 
     }
 
     /**
@@ -56,7 +49,6 @@ public class vistaPrincipal extends javax.swing.JFrame {
         Menu.setBackground(new java.awt.Color(51, 51, 255));
         Menu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btn_Inicio.setIcon(new javax.swing.ImageIcon("C:\\Users\\braul\\Desktop\\proyectobeibol\\Proyecto-Const.SW-Beisbol\\BeiboletosJavaProject\\Beiboletos\\src\\main\\java\\vistas\\images\\home.png")); // NOI18N
         btn_Inicio.setText("inicio");
         btn_Inicio.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btn_Inicio.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
@@ -68,7 +60,6 @@ public class vistaPrincipal extends javax.swing.JFrame {
         });
         Menu.add(btn_Inicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 220, 50));
 
-        btn_Partidos.setIcon(new javax.swing.ImageIcon("C:\\Users\\braul\\Desktop\\proyectobeibol\\Proyecto-Const.SW-Beisbol\\BeiboletosJavaProject\\Beiboletos\\src\\main\\java\\vistas\\images\\trophy.png")); // NOI18N
         btn_Partidos.setText("Partidos");
         btn_Partidos.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btn_Partidos.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
@@ -80,8 +71,9 @@ public class vistaPrincipal extends javax.swing.JFrame {
         });
         Menu.add(btn_Partidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, 220, 50));
 
-        btn_Equipos.setIcon(new javax.swing.ImageIcon("C:\\Users\\braul\\Desktop\\proyectobeibol\\Proyecto-Const.SW-Beisbol\\BeiboletosJavaProject\\Beiboletos\\src\\main\\java\\vistas\\images\\users.png")); // NOI18N
+        btn_Equipos.setBackground(new java.awt.Color(102, 102, 102));
         btn_Equipos.setText("Equipos");
+        btn_Equipos.setBorder(null);
         btn_Equipos.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btn_Equipos.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btn_Equipos.setIconTextGap(10);
@@ -99,7 +91,6 @@ public class vistaPrincipal extends javax.swing.JFrame {
         Title.setPreferredSize(new java.awt.Dimension(1270, 32));
         Title.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btn_Exit.setIcon(new javax.swing.ImageIcon("C:\\Users\\braul\\Desktop\\proyectobeibol\\Proyecto-Const.SW-Beisbol\\BeiboletosJavaProject\\Beiboletos\\src\\main\\java\\vistas\\images\\x-circle.png")); // NOI18N
         btn_Exit.setBorder(null);
         Title.add(btn_Exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(1230, 0, 50, 30));
 
@@ -118,32 +109,21 @@ public class vistaPrincipal extends javax.swing.JFrame {
 
     private void btn_PartidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_PartidosActionPerformed
         // TODO add your handling code here:
-       
-        showPanel(partidos);
+      
     }//GEN-LAST:event_btn_PartidosActionPerformed
 
     private void btn_InicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_InicioActionPerformed
         // TODO add your handling code here:
         
-        showPanel(inicio);
+  
     }//GEN-LAST:event_btn_InicioActionPerformed
 
     private void btn_EquiposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_EquiposActionPerformed
         // TODO add your handling code here:
-      
-        showPanel(equipos);
-    }//GEN-LAST:event_btn_EquiposActionPerformed
-   
-    private void showPanel(JPanel p){
-        p.setSize(980, 690);
-        p.setLocation(0, 0);
-        content.removeAll();
-        content.add(p, BorderLayout.CENTER);
-        content.revalidate();
-        content.repaint();
-    }
 
-  
+    }//GEN-LAST:event_btn_EquiposActionPerformed
+
+
    
     /**
      * @param args the command line arguments
@@ -162,21 +142,23 @@ public class vistaPrincipal extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(vistaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(vistaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(vistaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(vistaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new vistaPrincipal().setVisible(true);
+                new VistaPrincipal().setVisible(true);
             }
         });
     }
@@ -191,4 +173,26 @@ public class vistaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btn_Partidos;
     private javax.swing.JPanel content;
     // End of variables declaration//GEN-END:variables
+
+    public JButton getBtn_Equipos() {
+        return btn_Equipos;
+    }
+
+    public JButton getBtn_Exit() {
+        return btn_Exit;
+    }
+
+    public JButton getBtn_Inicio() {
+        return btn_Inicio;
+    }
+
+    public JButton getBtn_Partidos() {
+        return btn_Partidos;
+    }
+
+    public JPanel getContent() {
+        return content;
+    }
+    
+    
 }

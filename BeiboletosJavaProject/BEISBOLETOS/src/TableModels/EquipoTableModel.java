@@ -1,5 +1,5 @@
 
-package vistas;
+package TableModels;
 
 import ModelosD.Equipo;
 import ModelosDAO.EquipoDAO;
@@ -26,7 +26,11 @@ public class EquipoTableModel extends  AbstractTableModel{
 
     @Override
     public String getColumnName(int column) {
-        return super.getColumnName(column); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+        switch(column){
+            case 0: return "ID";
+            case 1: return "Nombre";
+            default: return "[no]";
+        }
     }
 
     @Override
@@ -41,7 +45,12 @@ public class EquipoTableModel extends  AbstractTableModel{
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        Equipo preguntado = datos.get(rowIndex);
+        switch(columnIndex){
+            case 0: return preguntado.getClaveEquipo();
+            case 1: return preguntado.getNombreEquipo();
+            default: return "";
+        }
     }
     
 }

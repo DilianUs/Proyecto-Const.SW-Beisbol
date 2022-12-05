@@ -102,7 +102,9 @@ public class MySQLEquipoDAO implements EquipoDAO{
     private Equipo convertir(ResultSet rs) throws SQLException{
         int claveEquipo = rs.getInt("ClvEquipo");
         String nombreEquipo = rs.getString("NombreEquipo");
-        Equipo equipo = new Equipo(claveEquipo, nombreEquipo);
+        Equipo equipo = new Equipo();
+        equipo.setClaveEquipo(claveEquipo);
+        equipo.setNombreEquipo(nombreEquipo);
         return equipo;
         
     }

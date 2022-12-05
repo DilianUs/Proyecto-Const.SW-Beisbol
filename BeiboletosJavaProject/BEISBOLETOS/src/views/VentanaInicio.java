@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package vistas;
+package views;
 
 import ModelosD.Boleto;
 import java.util.logging.Level;
@@ -14,12 +14,12 @@ import mysqlImplements.MySQLDaoManager;
  *
  * @author braul
  */
-public class Inicio extends javax.swing.JPanel {
+public class VentanaInicio extends javax.swing.JPanel {
 
     /**
      * Creates new form Inicio
      */
-    public Inicio() {
+    public VentanaInicio() {
         initComponents();
         cb_Partidos.removeAllItems();
         cb_Partidos.addItem("87");
@@ -67,7 +67,7 @@ public class Inicio extends javax.swing.JPanel {
         try {
             manager.getBoletoDAO().agregar(nuevoBoleto);
         } catch (DAOException ex) {
-            Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(VentanaInicio.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         

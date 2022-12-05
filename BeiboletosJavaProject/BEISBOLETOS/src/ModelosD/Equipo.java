@@ -15,9 +15,9 @@ public class Equipo {
     private int claveEquipo;
     private String nombreEquipo;
     
-    public Equipo(int claveEquipo, String nombreEquipo) {
-        this.claveEquipo = claveEquipo;
-        this.nombreEquipo = nombreEquipo;     
+    public Equipo() {
+        this.claveEquipo = 0;
+        this.nombreEquipo = "";     
     }
 
     public int getClaveEquipo() {

@@ -23,7 +23,9 @@ public class MySQLEquipoDAOTest {
         int claveEquipo=777;
         String nombreEquipo="Diablos";
         if(equipoPrueba==null){
-           equipoPrueba = new Equipo(claveEquipo, nombreEquipo); 
+           equipoPrueba = new Equipo(); 
+            equipoPrueba.setClaveEquipo(claveEquipo);
+           equipoPrueba.setNombreEquipo(nombreEquipo);
         }
         
     }

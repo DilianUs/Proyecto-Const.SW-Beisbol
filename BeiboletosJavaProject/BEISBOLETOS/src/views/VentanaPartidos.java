@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package vistas;
+package views;
 
 import ModelosD.Partido;
 import java.util.logging.Level;
@@ -15,12 +15,12 @@ import mysqlImplements.MySQLDaoManager;
  *
  * @author braul
  */
-public class Partidos extends javax.swing.JPanel {
+public class VentanaPartidos extends javax.swing.JPanel {
 
     /**
      * Creates new form Partidos
      */
-    public Partidos() {
+    public VentanaPartidos() {
         initComponents();
         setMeses();
         setDias();
@@ -129,7 +129,7 @@ public class Partidos extends javax.swing.JPanel {
         try {
             manager.getPartidoDAO().agregar(nuevoPartido);
         } catch (DAOException ex) {
-            Logger.getLogger(Partidos.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(VentanaPartidos.class.getName()).log(Level.SEVERE, null, ex);
         } 
           
     }//GEN-LAST:event_btn_crearPartidoActionPerformed

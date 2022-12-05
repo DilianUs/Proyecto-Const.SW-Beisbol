@@ -20,7 +20,9 @@ public class EquipoTest {
         int clave = 123;
         String nombreEquipo = "Leones";
         System.out.println("Se creara un equipo con claver:"+clave+" y nombre: "+nombreEquipo);
-        Equipo instancia = new Equipo(clave, nombreEquipo);
+        Equipo instancia = new Equipo();
+         instancia.setClaveEquipo(clave);
+        instancia.setNombreEquipo(nombreEquipo);
         
         assertEquals(instancia.getClaveEquipo() + instancia.getNombreEquipo(), clave+nombreEquipo);
         
