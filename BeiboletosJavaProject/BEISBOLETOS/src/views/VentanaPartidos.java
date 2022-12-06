@@ -1,6 +1,8 @@
 package views;
 
-import com.toedter.calendar.JDateChooser;
+
+
+import com.toedter.calendar.JCalendar;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JTable;
@@ -13,14 +15,14 @@ import javax.swing.JTextField;
  */
 public class VentanaPartidos extends javax.swing.JPanel {
 
+
     /**
      * Creates new form Partidos
      */
     public VentanaPartidos() {
-        initComponents();
-    
+        initComponents(); 
+
     }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -44,8 +46,9 @@ public class VentanaPartidos extends javax.swing.JPanel {
         cb_EquipoUno = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
         cb_EquipoDos = new javax.swing.JComboBox<>();
-        tf_FechaPartido = new com.toedter.calendar.JDateChooser();
         jLabel6 = new javax.swing.JLabel();
+        tf_FechaPartido = new javax.swing.JTextField();
+        calendario = new com.toedter.calendar.JCalendar();
         btn_Nuevo = new javax.swing.JButton();
         btn_Editar = new javax.swing.JButton();
         btn_Borrar = new javax.swing.JButton();
@@ -97,12 +100,19 @@ public class VentanaPartidos extends javax.swing.JPanel {
         jLabel4.setText("Equipo local:");
 
         cb_EquipoUno.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cb_EquipoUno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cb_EquipoUnoActionPerformed(evt);
+            }
+        });
 
         jLabel5.setText("Equipo visitante:");
 
         cb_EquipoDos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel6.setText("Fecha:");
+
+        calendario.setPreferredSize(new java.awt.Dimension(303, 241));
 
         javax.swing.GroupLayout panelDetallesPartidoLayout = new javax.swing.GroupLayout(panelDetallesPartido);
         panelDetallesPartido.setLayout(panelDetallesPartidoLayout);
@@ -112,25 +122,28 @@ public class VentanaPartidos extends javax.swing.JPanel {
                 .addGap(16, 16, 16)
                 .addGroup(panelDetallesPartidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelDetallesPartidoLayout.createSequentialGroup()
-                        .addGroup(panelDetallesPartidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel2)
-                            .addGroup(panelDetallesPartidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel4)
-                                .addComponent(jLabel3)
-                                .addComponent(jLabel5)))
+                        .addGroup(panelDetallesPartidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelDetallesPartidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel2)
+                                .addGroup(panelDetallesPartidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel5)))
+                            .addGroup(panelDetallesPartidoLayout.createSequentialGroup()
+                                .addGap(11, 11, 11)
+                                .addComponent(jLabel6)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(panelDetallesPartidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tf_NomLugar, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
+                            .addComponent(tf_NomLugar)
                             .addComponent(tf_ClvPartido)
                             .addComponent(cb_EquipoUno, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(cb_EquipoDos, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(cb_EquipoDos, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(tf_FechaPartido))
                         .addContainerGap())
                     .addGroup(panelDetallesPartidoLayout.createSequentialGroup()
                         .addGap(11, 11, 11)
-                        .addGroup(panelDetallesPartidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6)
-                            .addComponent(tf_FechaPartido, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addComponent(calendario, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(12, Short.MAX_VALUE))))
         );
         panelDetallesPartidoLayout.setVerticalGroup(
             panelDetallesPartidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -151,11 +164,13 @@ public class VentanaPartidos extends javax.swing.JPanel {
                 .addGroup(panelDetallesPartidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(cb_EquipoDos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(25, 25, 25)
-                .addComponent(jLabel6)
-                .addGap(18, 18, 18)
-                .addComponent(tf_FechaPartido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(264, Short.MAX_VALUE))
+                .addGap(21, 21, 21)
+                .addGroup(panelDetallesPartidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(tf_FechaPartido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(calendario, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(141, Short.MAX_VALUE))
         );
 
         panelTabla.add(panelDetallesPartido, java.awt.BorderLayout.LINE_END);
@@ -182,6 +197,10 @@ public class VentanaPartidos extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_tf_ClvPartidoActionPerformed
 
+    private void cb_EquipoUnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_EquipoUnoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cb_EquipoUnoActionPerformed
+
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -190,6 +209,7 @@ public class VentanaPartidos extends javax.swing.JPanel {
     private javax.swing.JButton btn_Editar;
     private javax.swing.JButton btn_Guardar;
     private javax.swing.JButton btn_Nuevo;
+    private com.toedter.calendar.JCalendar calendario;
     private javax.swing.JComboBox<String> cb_EquipoDos;
     private javax.swing.JComboBox<String> cb_EquipoUno;
     private javax.swing.JLabel jLabel1;
@@ -203,7 +223,7 @@ public class VentanaPartidos extends javax.swing.JPanel {
     private javax.swing.JPanel panelTabla;
     private javax.swing.JTable tb_Partidos;
     private javax.swing.JTextField tf_ClvPartido;
-    private com.toedter.calendar.JDateChooser tf_FechaPartido;
+    private javax.swing.JTextField tf_FechaPartido;
     private javax.swing.JTextField tf_NomLugar;
     // End of variables declaration//GEN-END:variables
 
@@ -247,10 +267,13 @@ public class VentanaPartidos extends javax.swing.JPanel {
         return cb_EquipoDos;
     }
 
-    public JDateChooser getTf_FechaPartido() {
+    public JTextField getTf_FechaPartido() {
         return tf_FechaPartido;
     }
 
-  
+    public JCalendar getCalendario() {
+        return calendario;
+    }
+    
     
 }
