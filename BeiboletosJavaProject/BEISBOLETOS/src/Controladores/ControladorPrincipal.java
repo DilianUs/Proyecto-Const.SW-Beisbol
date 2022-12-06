@@ -18,10 +18,12 @@ import views.VistaPrincipal;
  */
 public class ControladorPrincipal implements ActionListener{
     private VistaPrincipal ventanaNavegacion;
+     private  VentanaEquipos equipos = new VentanaEquipos();
     private VentanaPartidos partidos = new VentanaPartidos();
     private VentanaInicio inicio = new VentanaInicio();
-    private  VentanaEquipos equipos = new VentanaEquipos();
     private ControladorVentanaEquipos controladorEquipos;
+    private ControladorVentanaPartidos controladorPartidos;
+    
 
     public ControladorPrincipal(VistaPrincipal ventana) throws DAOException {
         this.ventanaNavegacion = ventana;
@@ -30,6 +32,7 @@ public class ControladorPrincipal implements ActionListener{
         this.ventanaNavegacion.getBtn_Equipos().addActionListener(this);
         this.ventanaNavegacion.getBtn_Exit().addActionListener(this);
         this.controladorEquipos = new ControladorVentanaEquipos(this.equipos);
+        this.controladorPartidos = new ControladorVentanaPartidos(this.partidos);
         showPanel(inicio);
     }
      

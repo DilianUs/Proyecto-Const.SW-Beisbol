@@ -1,14 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package views;
 
-import ModelosD.Partido;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import mysqlImplements.DAOException;
-import mysqlImplements.MySQLDaoManager;
+import javax.swing.JButton;
+import javax.swing.JTable;
 
 
 /**
@@ -22,11 +15,7 @@ public class VentanaPartidos extends javax.swing.JPanel {
      */
     public VentanaPartidos() {
         initComponents();
-        setMeses();
-        setDias();
-        setHoras();
-        setEquipoUno();
-        setEquipoDos();
+    
     }
     
 
@@ -40,19 +29,19 @@ public class VentanaPartidos extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        btn_crearPartido = new javax.swing.JButton();
-        cb_Mes = new javax.swing.JComboBox<>();
-        cb_Dia = new javax.swing.JComboBox<>();
-        cb_Hora = new javax.swing.JComboBox<>();
-        cb_EquipoUno = new javax.swing.JComboBox<>();
-        cb_EquipoDos = new javax.swing.JComboBox<>();
+        panelTabla = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tb_Partidos = new javax.swing.JTable();
+        panelDetallesPartido = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        input_ClvPartido = new javax.swing.JTextField();
-        input_Lugar = new javax.swing.JTextField();
+        tf_ClvEquipo = new javax.swing.JTextField();
+        tf_NomEquipo = new javax.swing.JTextField();
+        btn_Nuevo = new javax.swing.JButton();
+        btn_Editar = new javax.swing.JButton();
+        btn_Borrar = new javax.swing.JButton();
+        btn_Guardar = new javax.swing.JButton();
+        btn_Cancelar = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(980, 690));
@@ -63,138 +52,133 @@ public class VentanaPartidos extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Partidos");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, -1, -1));
 
-        btn_crearPartido.setText("Crear Partido");
-        btn_crearPartido.addActionListener(new java.awt.event.ActionListener() {
+        panelTabla.setLayout(new java.awt.BorderLayout());
+
+        tb_Partidos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(tb_Partidos);
+
+        panelTabla.add(jScrollPane1, java.awt.BorderLayout.CENTER);
+
+        panelDetallesPartido.setMaximumSize(new java.awt.Dimension(300, 134));
+        panelDetallesPartido.setMinimumSize(new java.awt.Dimension(300, 134));
+        panelDetallesPartido.setVerifyInputWhenFocusTarget(false);
+
+        jLabel2.setText("Clave del Equipo(#):");
+
+        jLabel3.setText("Nombre del Equipo:");
+
+        tf_ClvEquipo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_crearPartidoActionPerformed(evt);
+                tf_ClvEquipoActionPerformed(evt);
             }
         });
-        add(btn_crearPartido, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 580, -1, -1));
 
-        cb_Mes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        add(cb_Mes, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 130, 30));
+        javax.swing.GroupLayout panelDetallesPartidoLayout = new javax.swing.GroupLayout(panelDetallesPartido);
+        panelDetallesPartido.setLayout(panelDetallesPartidoLayout);
+        panelDetallesPartidoLayout.setHorizontalGroup(
+            panelDetallesPartidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelDetallesPartidoLayout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addGroup(panelDetallesPartidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelDetallesPartidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tf_NomEquipo, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
+                    .addComponent(tf_ClvEquipo))
+                .addContainerGap())
+        );
+        panelDetallesPartidoLayout.setVerticalGroup(
+            panelDetallesPartidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelDetallesPartidoLayout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addGroup(panelDetallesPartidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(tf_ClvEquipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addGroup(panelDetallesPartidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(tf_NomEquipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(455, Short.MAX_VALUE))
+        );
 
-        cb_Dia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        add(cb_Dia, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 100, 130, 30));
+        panelTabla.add(panelDetallesPartido, java.awt.BorderLayout.LINE_END);
 
-        cb_Hora.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        add(cb_Hora, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 100, 160, 30));
+        add(panelTabla, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 980, 560));
 
-        cb_EquipoUno.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        add(cb_EquipoUno, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 220, 140, 30));
+        btn_Nuevo.setText("Nuevo");
+        add(btn_Nuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, -1));
 
-        cb_EquipoDos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        add(cb_EquipoDos, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 220, 150, 30));
+        btn_Editar.setText("Editar");
+        add(btn_Editar, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 40, -1, -1));
 
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setText("Equipo2");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 200, -1, -1));
+        btn_Borrar.setText("Borrar");
+        add(btn_Borrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 40, -1, -1));
 
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel3.setText("Mes");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, -1, -1));
+        btn_Guardar.setText("Guardar");
+        add(btn_Guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 40, -1, -1));
 
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel4.setText("Dia");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 80, -1, -1));
-
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel5.setText("Hora");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 80, -1, -1));
-
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel6.setText("Equipo1");
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 200, -1, 20));
-
-        input_ClvPartido.setText("Clave del partido");
-        add(input_ClvPartido, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 370, -1, -1));
-
-        input_Lugar.setText("Direccion");
-        add(input_Lugar, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 380, -1, -1));
+        btn_Cancelar.setText("Cancelar");
+        add(btn_Cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 40, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btn_crearPartidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_crearPartidoActionPerformed
+    private void tf_ClvEquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_ClvEquipoActionPerformed
         // TODO add your handling code here:
-        int clave=Integer.parseInt(input_ClvPartido.getText());
-        String lugar=input_Lugar.getText();  
-        int equipoU = Integer.parseInt(cb_EquipoUno.getSelectedItem().toString());
-        int equipoD = Integer.parseInt(cb_EquipoDos.getSelectedItem().toString());
-        int hora = Integer.parseInt(cb_Hora.getSelectedItem().toString());
-         int Dia = Integer.parseInt(cb_Dia.getSelectedItem().toString());
-          int mes = Integer.parseInt(cb_Mes.getSelectedItem().toString());
-          Partido nuevoPartido=new Partido(clave, lugar, equipoU, equipoD, hora, Dia, mes);
-          MySQLDaoManager manager = new MySQLDaoManager();
-        try {
-            manager.getPartidoDAO().agregar(nuevoPartido);
-        } catch (DAOException ex) {
-            Logger.getLogger(VentanaPartidos.class.getName()).log(Level.SEVERE, null, ex);
-        } 
-          
-    }//GEN-LAST:event_btn_crearPartidoActionPerformed
-    public void setMeses(){
-        int cantidadMeses=12;
-        cb_Mes.removeAllItems();
-        for (int i=0;i<cantidadMeses;i++){
-           int mes = i+1;
-           if(i<9){
-              cb_Mes.addItem("0"+mes); 
-           } else{
-               cb_Mes.addItem(""+mes);
-           }
-           
-            
-        }
-    }
-    public void setDias(){
-        int dias= 31;
-        cb_Dia.removeAllItems();
-        for(int i=0;i<dias;i++){
-            int diaActual=i+1;
-            if(i<9){
-              cb_Dia.addItem("0"+diaActual); 
-           } else{
-               cb_Dia.addItem(""+diaActual);
-           }
-        }
-    }
-    public void setHoras(){
-        int horasDia=24;
-        cb_Hora.removeAllItems();
-        for(int i=0;i<horasDia;i++){
-            int hora=i;
-            if(i<9){
-              cb_Hora.addItem("0"+hora); 
-           } else{
-               cb_Hora.addItem(""+hora);
-           }
-        }
-    }
-    public void setEquipoUno(){
-        cb_EquipoUno.removeAllItems();
-        cb_EquipoUno.addItem("123");
-    }
-    public void setEquipoDos(){
-         cb_EquipoDos.removeAllItems();
-        cb_EquipoDos.addItem("342");
-    }
+    }//GEN-LAST:event_tf_ClvEquipoActionPerformed
+
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_crearPartido;
-    private javax.swing.JComboBox<String> cb_Dia;
-    private javax.swing.JComboBox<String> cb_EquipoDos;
-    private javax.swing.JComboBox<String> cb_EquipoUno;
-    private javax.swing.JComboBox<String> cb_Hora;
-    private javax.swing.JComboBox<String> cb_Mes;
-    private javax.swing.JTextField input_ClvPartido;
-    private javax.swing.JTextField input_Lugar;
+    private javax.swing.JButton btn_Borrar;
+    private javax.swing.JButton btn_Cancelar;
+    private javax.swing.JButton btn_Editar;
+    private javax.swing.JButton btn_Guardar;
+    private javax.swing.JButton btn_Nuevo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPanel panelDetallesPartido;
+    private javax.swing.JPanel panelTabla;
+    private javax.swing.JTable tb_Partidos;
+    private javax.swing.JTextField tf_ClvEquipo;
+    private javax.swing.JTextField tf_NomEquipo;
     // End of variables declaration//GEN-END:variables
+
+    public JButton getBtn_Borrar() {
+        return btn_Borrar;
+    }
+
+    public JButton getBtn_Cancelar() {
+        return btn_Cancelar;
+    }
+
+    public JButton getBtn_Editar() {
+        return btn_Editar;
+    }
+
+    public JButton getBtn_Guardar() {
+        return btn_Guardar;
+    }
+
+    public JButton getBtn_Nuevo() {
+        return btn_Nuevo;
+    }
+
+    public JTable getTb_Partidos() {
+        return tb_Partidos;
+    }
     
 }
