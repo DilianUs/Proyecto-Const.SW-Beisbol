@@ -54,7 +54,7 @@
         <Container class="javax.swing.JPanel" name="Menu">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="33" red="33" type="rgb"/>
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
           </Properties>
           <Constraints>
@@ -69,7 +69,12 @@
           <SubComponents>
             <Component class="javax.swing.JButton" name="btn_Inicio">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="2" name="C:\Users\braul\Desktop\carpetas escritorio\proyectobeibol\Proyecto-Const.SW-Beisbol\BeiboletosJavaProject\BEISBOLETOS\src\vistas\images\home.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="inicio"/>
+                <Property name="borderPainted" type="boolean" value="false"/>
+                <Property name="contentAreaFilled" type="boolean" value="false"/>
                 <Property name="horizontalAlignment" type="int" value="2"/>
                 <Property name="horizontalTextPosition" type="int" value="4"/>
                 <Property name="iconTextGap" type="int" value="10"/>
@@ -85,7 +90,12 @@
             </Component>
             <Component class="javax.swing.JButton" name="btn_Partidos">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="2" name="C:\Users\braul\Desktop\carpetas escritorio\proyectobeibol\Proyecto-Const.SW-Beisbol\BeiboletosJavaProject\BEISBOLETOS\src\vistas\images\trophy.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Partidos"/>
+                <Property name="borderPainted" type="boolean" value="false"/>
+                <Property name="contentAreaFilled" type="boolean" value="false"/>
                 <Property name="horizontalAlignment" type="int" value="2"/>
                 <Property name="horizontalTextPosition" type="int" value="4"/>
                 <Property name="iconTextGap" type="int" value="10"/>
@@ -95,19 +105,18 @@
               </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="30" y="240" width="220" height="50"/>
+                  <AbsoluteConstraints x="30" y="250" width="220" height="50"/>
                 </Constraint>
               </Constraints>
             </Component>
             <Component class="javax.swing.JButton" name="btn_Equipos">
               <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="66" green="66" red="66" type="rgb"/>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="2" name="C:\Users\braul\Desktop\carpetas escritorio\proyectobeibol\Proyecto-Const.SW-Beisbol\BeiboletosJavaProject\BEISBOLETOS\src\vistas\images\users.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Equipos"/>
-                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="null"/>
-                </Property>
+                <Property name="borderPainted" type="boolean" value="false"/>
+                <Property name="contentAreaFilled" type="boolean" value="false"/>
                 <Property name="horizontalAlignment" type="int" value="2"/>
                 <Property name="horizontalTextPosition" type="int" value="4"/>
                 <Property name="iconTextGap" type="int" value="10"/>
@@ -117,7 +126,7 @@
               </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="30" y="320" width="220" height="50"/>
+                  <AbsoluteConstraints x="30" y="330" width="220" height="50"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -162,7 +171,7 @@
         <Container class="javax.swing.JPanel" name="content">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+              <Color blue="f3" green="f3" red="f3" type="rgb"/>
             </Property>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[980, 690]"/>

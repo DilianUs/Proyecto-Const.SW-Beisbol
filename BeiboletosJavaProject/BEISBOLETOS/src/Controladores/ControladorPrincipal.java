@@ -1,10 +1,9 @@
 package Controladores;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JPanel;
 import mysqlImplements.DAOException;
 import views.VentanaEquipos;
@@ -21,6 +20,7 @@ public class ControladorPrincipal implements ActionListener{
      private  VentanaEquipos equipos = new VentanaEquipos();
     private VentanaPartidos partidos = new VentanaPartidos();
     private VentanaInicio inicio = new VentanaInicio();
+    
     private ControladorVentanaEquipos controladorEquipos;
     private ControladorVentanaPartidos controladorPartidos;
     
@@ -31,9 +31,12 @@ public class ControladorPrincipal implements ActionListener{
         this.ventanaNavegacion.getBtn_Partidos().addActionListener(this);
         this.ventanaNavegacion.getBtn_Equipos().addActionListener(this);
         this.ventanaNavegacion.getBtn_Exit().addActionListener(this);
+       
         this.controladorEquipos = new ControladorVentanaEquipos(this.equipos);
         this.controladorPartidos = new ControladorVentanaPartidos(this.partidos);
+        
         showPanel(inicio);
+        inicio.setBackground(Color.getColor("F3F3F3"));
     }
      
     @Override

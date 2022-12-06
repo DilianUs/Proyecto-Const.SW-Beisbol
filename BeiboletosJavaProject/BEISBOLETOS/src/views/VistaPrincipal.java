@@ -46,10 +46,13 @@ public class VistaPrincipal extends javax.swing.JFrame {
         Background.setPreferredSize(new java.awt.Dimension(1280, 720));
         Background.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Menu.setBackground(new java.awt.Color(51, 51, 255));
+        Menu.setBackground(new java.awt.Color(255, 255, 255));
         Menu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        btn_Inicio.setIcon(new javax.swing.ImageIcon("C:\\Users\\braul\\Desktop\\carpetas escritorio\\proyectobeibol\\Proyecto-Const.SW-Beisbol\\BeiboletosJavaProject\\BEISBOLETOS\\src\\vistas\\images\\home.png")); // NOI18N
         btn_Inicio.setText("inicio");
+        btn_Inicio.setBorderPainted(false);
+        btn_Inicio.setContentAreaFilled(false);
         btn_Inicio.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btn_Inicio.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btn_Inicio.setIconTextGap(10);
@@ -60,7 +63,10 @@ public class VistaPrincipal extends javax.swing.JFrame {
         });
         Menu.add(btn_Inicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 220, 50));
 
+        btn_Partidos.setIcon(new javax.swing.ImageIcon("C:\\Users\\braul\\Desktop\\carpetas escritorio\\proyectobeibol\\Proyecto-Const.SW-Beisbol\\BeiboletosJavaProject\\BEISBOLETOS\\src\\vistas\\images\\trophy.png")); // NOI18N
         btn_Partidos.setText("Partidos");
+        btn_Partidos.setBorderPainted(false);
+        btn_Partidos.setContentAreaFilled(false);
         btn_Partidos.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btn_Partidos.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btn_Partidos.setIconTextGap(10);
@@ -69,11 +75,12 @@ public class VistaPrincipal extends javax.swing.JFrame {
                 btn_PartidosActionPerformed(evt);
             }
         });
-        Menu.add(btn_Partidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, 220, 50));
+        Menu.add(btn_Partidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 220, 50));
 
-        btn_Equipos.setBackground(new java.awt.Color(102, 102, 102));
+        btn_Equipos.setIcon(new javax.swing.ImageIcon("C:\\Users\\braul\\Desktop\\carpetas escritorio\\proyectobeibol\\Proyecto-Const.SW-Beisbol\\BeiboletosJavaProject\\BEISBOLETOS\\src\\vistas\\images\\users.png")); // NOI18N
         btn_Equipos.setText("Equipos");
-        btn_Equipos.setBorder(null);
+        btn_Equipos.setBorderPainted(false);
+        btn_Equipos.setContentAreaFilled(false);
         btn_Equipos.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btn_Equipos.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btn_Equipos.setIconTextGap(10);
@@ -82,7 +89,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
                 btn_EquiposActionPerformed(evt);
             }
         });
-        Menu.add(btn_Equipos, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, 220, 50));
+        Menu.add(btn_Equipos, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, 220, 50));
 
         Background.add(Menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 300, 720));
 
@@ -96,7 +103,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
         Background.add(Title, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 30));
 
-        content.setBackground(new java.awt.Color(255, 255, 255));
+        content.setBackground(new java.awt.Color(243, 243, 243));
         content.setMaximumSize(new java.awt.Dimension(980, 690));
         content.setMinimumSize(new java.awt.Dimension(980, 690));
         content.setLayout(new java.awt.GridLayout(1, 0));
@@ -120,7 +127,6 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
     private void btn_EquiposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_EquiposActionPerformed
         // TODO add your handling code here:
-
     }//GEN-LAST:event_btn_EquiposActionPerformed
 
 

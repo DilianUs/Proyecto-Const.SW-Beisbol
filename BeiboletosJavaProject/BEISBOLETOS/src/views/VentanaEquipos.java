@@ -38,8 +38,9 @@ public class VentanaEquipos extends javax.swing.JPanel {
         btn_Borrar = new javax.swing.JButton();
         btn_Guardar = new javax.swing.JButton();
         btn_Cancelar = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(new java.awt.Color(243, 243, 243));
         setMaximumSize(new java.awt.Dimension(980, 690));
         setMinimumSize(new java.awt.Dimension(980, 690));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -114,11 +115,16 @@ public class VentanaEquipos extends javax.swing.JPanel {
 
         add(panelTabla, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 980, 560));
 
+        btn_Nuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vistas/images/plus-circle.png"))); // NOI18N
         btn_Nuevo.setText("Nuevo");
-        add(btn_Nuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, -1, -1));
+        btn_Nuevo.setBorderPainted(false);
+        btn_Nuevo.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        btn_Nuevo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_Nuevo.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        add(btn_Nuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 70, 30));
 
         btn_Editar.setText("Editar");
-        add(btn_Editar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 50, -1, -1));
+        add(btn_Editar, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 50, -1, -1));
 
         btn_Borrar.setText("Borrar");
         add(btn_Borrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 50, -1, -1));
@@ -128,6 +134,9 @@ public class VentanaEquipos extends javax.swing.JPanel {
 
         btn_Cancelar.setText("Cancelar");
         add(btn_Cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 50, -1, -1));
+
+        jButton1.setText("jButton1");
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 50, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void tf_ClvEquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_ClvEquipoActionPerformed
@@ -141,6 +150,7 @@ public class VentanaEquipos extends javax.swing.JPanel {
     private javax.swing.JButton btn_Editar;
     private javax.swing.JButton btn_Guardar;
     private javax.swing.JButton btn_Nuevo;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

@@ -46,6 +46,7 @@ public class MySQLPartidoDAO implements PartidoDAO{
             if(statement != null){
                 try {
                   statement.close();
+                  jdbc.desconectar();
                 } catch (SQLException ex) {
                     throw new DAOException("Error en SQL", ex);
                 }
@@ -69,6 +70,7 @@ public class MySQLPartidoDAO implements PartidoDAO{
             if(statement!=null){
                 try {
                     statement.close();
+                    jdbc.desconectar();
                 } catch (SQLException ex) {
                     throw new DAOException("Error SQL",ex);
                 }
@@ -97,6 +99,7 @@ public class MySQLPartidoDAO implements PartidoDAO{
             if(statement!=null){
                 try {
                     statement.close();
+                    jdbc.desconectar();
                 } catch (SQLException ex) {
                     throw new DAOException("Error SQL",ex);
                 }
@@ -157,6 +160,7 @@ public class MySQLPartidoDAO implements PartidoDAO{
             if(statement != null){
                 try {
                     statement.close();
+                    jdbc.desconectar();
                 } catch (SQLException ex) {
                     new DAOException("Error en SQL",ex);
                 }
@@ -190,6 +194,7 @@ public class MySQLPartidoDAO implements PartidoDAO{
             if(statement != null){
                 try {
                     statement.close();
+                    jdbc.desconectar();
                 } catch (SQLException ex) {
                     new DAOException("Error en SQL",ex);
                 }

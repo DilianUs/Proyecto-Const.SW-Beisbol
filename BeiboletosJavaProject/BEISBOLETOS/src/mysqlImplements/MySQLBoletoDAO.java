@@ -37,8 +37,9 @@ public class MySQLBoletoDAO implements BoletoDAO{
             throw new DAOException("Error en SQL", ex);
         }finally {
             if(statement != null){
-                try {
+                try { 
                   statement.close();
+                  jdbc.desconectar();
                 } catch (SQLException ex) {
                     throw new DAOException("Error en SQL", ex);
                 }
@@ -62,6 +63,7 @@ public class MySQLBoletoDAO implements BoletoDAO{
             if(statement!=null){
                 try {
                     statement.close();
+                    jdbc.desconectar();
                 } catch (SQLException ex) {
                     throw new DAOException("Error SQL",ex);
                 }
@@ -86,6 +88,7 @@ public class MySQLBoletoDAO implements BoletoDAO{
             if(statement!=null){
                 try {
                     statement.close();
+                    jdbc.desconectar();
                 } catch (SQLException ex) {
                     throw new DAOException("Error SQL",ex);
                 }
@@ -130,6 +133,7 @@ public class MySQLBoletoDAO implements BoletoDAO{
             if(statement != null){
                 try {
                     statement.close();
+                    jdbc.desconectar();
                 } catch (SQLException ex) {
                     new DAOException("Error en SQL",ex);
                 }
@@ -162,6 +166,7 @@ public class MySQLBoletoDAO implements BoletoDAO{
             if(statement != null){
                 try {
                     statement.close();
+                    jdbc.desconectar();
                 } catch (SQLException ex) {
                     new DAOException("Error en SQL",ex);
                 }

@@ -55,7 +55,7 @@ public class VentanaPartidos extends javax.swing.JPanel {
         btn_Guardar = new javax.swing.JButton();
         btn_Cancelar = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(new java.awt.Color(243, 243, 243));
         setMaximumSize(new java.awt.Dimension(980, 690));
         setMinimumSize(new java.awt.Dimension(980, 690));
         setPreferredSize(new java.awt.Dimension(980, 690));
