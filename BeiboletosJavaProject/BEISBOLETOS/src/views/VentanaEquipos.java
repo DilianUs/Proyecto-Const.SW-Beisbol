@@ -38,7 +38,6 @@ public class VentanaEquipos extends javax.swing.JPanel {
         btn_Borrar = new javax.swing.JButton();
         btn_Guardar = new javax.swing.JButton();
         btn_Cancelar = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(243, 243, 243));
         setMaximumSize(new java.awt.Dimension(980, 690));
@@ -48,7 +47,7 @@ public class VentanaEquipos extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Equipos");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 110, -1));
 
         panelTabla.setLayout(new java.awt.BorderLayout());
 
@@ -113,35 +112,64 @@ public class VentanaEquipos extends javax.swing.JPanel {
 
         panelTabla.add(panelDetallesEquipo, java.awt.BorderLayout.LINE_END);
 
-        add(panelTabla, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 980, 560));
+        add(panelTabla, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 980, 560));
 
-        btn_Nuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vistas/images/plus-circle.png"))); // NOI18N
+        btn_Nuevo.setIcon(new javax.swing.ImageIcon("C:\\Users\\braul\\Desktop\\carpetas escritorio\\proyectobeibol\\Proyecto-Const.SW-Beisbol\\BeiboletosJavaProject\\BEISBOLETOS\\src\\vistas\\images\\plus-circle.png")); // NOI18N
         btn_Nuevo.setText("Nuevo");
         btn_Nuevo.setBorderPainted(false);
+        btn_Nuevo.setContentAreaFilled(false);
         btn_Nuevo.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         btn_Nuevo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_Nuevo.setPreferredSize(new java.awt.Dimension(71, 24));
         btn_Nuevo.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        add(btn_Nuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 70, 30));
+        add(btn_Nuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 70, 80));
 
+        btn_Editar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vistas/images/pencil-square.png"))); // NOI18N
         btn_Editar.setText("Editar");
-        add(btn_Editar, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 50, -1, -1));
+        btn_Editar.setBorderPainted(false);
+        btn_Editar.setContentAreaFilled(false);
+        btn_Editar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_Editar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        add(btn_Editar, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 40, -1, 80));
 
+        btn_Borrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vistas/images/archive-box-x-mark.png"))); // NOI18N
         btn_Borrar.setText("Borrar");
-        add(btn_Borrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 50, -1, -1));
+        btn_Borrar.setBorderPainted(false);
+        btn_Borrar.setContentAreaFilled(false);
+        btn_Borrar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_Borrar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        add(btn_Borrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 40, 80, 80));
 
+        btn_Guardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vistas/images/check-circle.png"))); // NOI18N
         btn_Guardar.setText("Guardar");
-        add(btn_Guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 50, -1, -1));
+        btn_Guardar.setBorderPainted(false);
+        btn_Guardar.setContentAreaFilled(false);
+        btn_Guardar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_Guardar.setPreferredSize(new java.awt.Dimension(70, 76));
+        btn_Guardar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        add(btn_Guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 40, 80, 80));
 
+        btn_Cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vistas/images/x-circle.png"))); // NOI18N
         btn_Cancelar.setText("Cancelar");
-        add(btn_Cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 50, -1, -1));
-
-        jButton1.setText("jButton1");
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 50, -1, -1));
+        btn_Cancelar.setBorderPainted(false);
+        btn_Cancelar.setContentAreaFilled(false);
+        btn_Cancelar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_Cancelar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btn_Cancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_CancelarActionPerformed(evt);
+            }
+        });
+        add(btn_Cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 40, -1, 80));
     }// </editor-fold>//GEN-END:initComponents
 
     private void tf_ClvEquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_ClvEquipoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tf_ClvEquipoActionPerformed
+
+    private void btn_CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_CancelarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_CancelarActionPerformed
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -150,7 +178,6 @@ public class VentanaEquipos extends javax.swing.JPanel {
     private javax.swing.JButton btn_Editar;
     private javax.swing.JButton btn_Guardar;
     private javax.swing.JButton btn_Nuevo;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

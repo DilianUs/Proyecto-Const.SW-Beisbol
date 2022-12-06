@@ -38,7 +38,6 @@ public class VentanaInicio extends javax.swing.JPanel {
         cb_Partidos = new javax.swing.JComboBox<>();
         input_ClvBoleto = new javax.swing.JTextField();
         btn_GenerarBoleto = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(243, 243, 243));
         setMaximumSize(new java.awt.Dimension(980, 690));
@@ -58,9 +57,6 @@ public class VentanaInicio extends javax.swing.JPanel {
             }
         });
         add(btn_GenerarBoleto, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 400, -1, -1));
-
-        jButton2.setText("jButton2");
-        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 150, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_GenerarBoletoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_GenerarBoletoActionPerformed
@@ -83,6 +79,5 @@ public class VentanaInicio extends javax.swing.JPanel {
     private javax.swing.JButton btn_GenerarBoleto;
     private javax.swing.JComboBox<String> cb_Partidos;
     private javax.swing.JTextField input_ClvBoleto;
-    private javax.swing.JButton jButton2;
     // End of variables declaration//GEN-END:variables
 }

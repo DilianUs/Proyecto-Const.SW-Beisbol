@@ -44,6 +44,7 @@ public class ControladorVentanaPartidos implements ActionListener {
         calendarioEventos();
         setInitialButtonsState();
         setComboBoxModels();
+        setComboBoxHoras();
         this.ventanaPartidos.getTb_Partidos().getSelectionModel().addListSelectionListener(e ->{
             boolean seleccionValida = (this.ventanaPartidos.getTb_Partidos().getSelectedRow()!=-1);
             this.ventanaPartidos.getBtn_Editar().setEnabled(seleccionValida);
@@ -75,6 +76,20 @@ public class ControladorVentanaPartidos implements ActionListener {
         this.ventanaPartidos.getCb_EquipoDos().setModel(comboModelVisitantes);
         comboModelLocales.update();
         comboModelVisitantes.update();
+    }
+    private void setComboBoxHoras(){
+        int Horas_dia = 24;
+        String horaActual;
+        for(int i = 0;i<Horas_dia;i++){
+            if(i<10){
+                horaActual= "0"+String.valueOf(i);
+            }else{
+                horaActual= String.valueOf(i);
+            }
+           
+           this.ventanaPartidos.getCb_HoraPartido().addItem(horaActual);
+        }
+        
     }
 
     @Override
@@ -177,7 +192,7 @@ public class ControladorVentanaPartidos implements ActionListener {
     private void guardarBtnAction() throws ParseException {
         try {
             saveData();
-            Partido partidoActual = getPartido();
+            Partido partidoActual = saveData();
            
             Boolean existe = (manager.getPartidoDAO().obtener(partidoActual.getClvPartido())!=null);
           
@@ -234,6 +249,8 @@ public class ControladorVentanaPartidos implements ActionListener {
         this.ventanaPartidos.getCb_EquipoDos().setEnabled(editableElement);
         this.ventanaPartidos.getTf_FechaPartido().setEditable(editableElement);
         this.ventanaPartidos.getCalendario().setEnabled(editableElement);
+        this.ventanaPartidos.getCb_HoraPartido().setEditable(editableElement);
+        this.ventanaPartidos.getCb_HoraPartido().setEnabled(editableElement);
 
     }
     
@@ -247,6 +264,7 @@ public class ControladorVentanaPartidos implements ActionListener {
             String equipoVisitante = obtenerEquipoString(partido.getEquipo_Dos());
             this.ventanaPartidos.getCb_EquipoDos().setSelectedItem(equipoVisitante);
             this.ventanaPartidos.getTf_FechaPartido().setText(this.partido.getFechaPartido());
+            this.ventanaPartidos.getCb_HoraPartido().setSelectedItem(this.partido.getHora());
             
         }else{
             this.ventanaPartidos.getTf_ClvPartido().setText("");
@@ -266,19 +284,21 @@ public class ControladorVentanaPartidos implements ActionListener {
     
     
     
-    public void saveData(){
+    public Partido saveData(){
         if(this.partido == null){
             setPartido(new Partido());
         }
-        this.partido.setClvPartido(Integer.parseInt(ventanaPartidos.getTf_ClvPartido().getText()));
-       this.partido.setLugar(ventanaPartidos.getTf_NomLugar().getText());
-        int clvEquipoUno = obtenerNumeroClv((String) ventanaPartidos.getCb_EquipoUno().getSelectedItem());
-        this.partido.setEquipo_Uno(clvEquipoUno);
-         int clvEquipoDos = obtenerNumeroClv((String) ventanaPartidos.getCb_EquipoDos().getSelectedItem());
-       this. partido.setEquipo_Dos(clvEquipoDos);
-        this.partido.setFechaPartido(ventanaPartidos.getTf_FechaPartido().getText());
-       this. partido.setHora(20);
-        
+        Partido partidoGuardado = new Partido();
+        partidoGuardado.setClvPartido(Integer.parseInt(this.ventanaPartidos.getTf_ClvPartido().getText()));
+       partidoGuardado.setLugar(this.ventanaPartidos.getTf_NomLugar().getText());
+        int clvEquipoUno = obtenerNumeroClv((String) this.ventanaPartidos.getCb_EquipoUno().getSelectedItem());
+        partidoGuardado.setEquipo_Uno(clvEquipoUno);
+         int clvEquipoDos = obtenerNumeroClv((String) this.ventanaPartidos.getCb_EquipoDos().getSelectedItem());
+       partidoGuardado.setEquipo_Dos(clvEquipoDos);
+        partidoGuardado.setFechaPartido(this.ventanaPartidos.getTf_FechaPartido().getText());   
+       int hora =Integer.parseInt((String) this.ventanaPartidos.getCb_HoraPartido().getSelectedItem());
+      partidoGuardado.setHora(hora);
+        return partidoGuardado;
     }
     
     private Partido getPartidoSeleccionado() throws DAOException{

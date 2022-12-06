@@ -35,8 +35,6 @@ public class VentanaPartidos extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
         panelTabla = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tb_Partidos = new javax.swing.JTable();
         panelDetallesPartido = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -49,6 +47,10 @@ public class VentanaPartidos extends javax.swing.JPanel {
         jLabel6 = new javax.swing.JLabel();
         tf_FechaPartido = new javax.swing.JTextField();
         calendario = new com.toedter.calendar.JCalendar();
+        cb_HoraPartido = new javax.swing.JComboBox<>();
+        jLabel7 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tb_Partidos = new javax.swing.JTable();
         btn_Nuevo = new javax.swing.JButton();
         btn_Editar = new javax.swing.JButton();
         btn_Borrar = new javax.swing.JButton();
@@ -68,23 +70,9 @@ public class VentanaPartidos extends javax.swing.JPanel {
 
         panelTabla.setLayout(new java.awt.BorderLayout());
 
-        tb_Partidos.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane1.setViewportView(tb_Partidos);
-
-        panelTabla.add(jScrollPane1, java.awt.BorderLayout.CENTER);
-
         panelDetallesPartido.setMaximumSize(new java.awt.Dimension(300, 134));
         panelDetallesPartido.setMinimumSize(new java.awt.Dimension(300, 134));
+        panelDetallesPartido.setPreferredSize(new java.awt.Dimension(300, 134));
         panelDetallesPartido.setVerifyInputWhenFocusTarget(false);
 
         jLabel2.setText("Clave del Partido(#):");
@@ -114,12 +102,14 @@ public class VentanaPartidos extends javax.swing.JPanel {
 
         calendario.setPreferredSize(new java.awt.Dimension(303, 241));
 
+        jLabel7.setText("Hora:");
+
         javax.swing.GroupLayout panelDetallesPartidoLayout = new javax.swing.GroupLayout(panelDetallesPartido);
         panelDetallesPartido.setLayout(panelDetallesPartidoLayout);
         panelDetallesPartidoLayout.setHorizontalGroup(
             panelDetallesPartidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelDetallesPartidoLayout.createSequentialGroup()
-                .addGap(16, 16, 16)
+                .addContainerGap()
                 .addGroup(panelDetallesPartidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelDetallesPartidoLayout.createSequentialGroup()
                         .addGroup(panelDetallesPartidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -138,12 +128,19 @@ public class VentanaPartidos extends javax.swing.JPanel {
                             .addComponent(tf_ClvPartido)
                             .addComponent(cb_EquipoUno, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(cb_EquipoDos, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(tf_FechaPartido))
-                        .addContainerGap())
+                            .addComponent(tf_FechaPartido)))
                     .addGroup(panelDetallesPartidoLayout.createSequentialGroup()
                         .addGap(11, 11, 11)
-                        .addComponent(calendario, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(12, Short.MAX_VALUE))))
+                        .addGroup(panelDetallesPartidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(panelDetallesPartidoLayout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(jLabel7))
+                            .addComponent(calendario, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(10, 10, 10))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDetallesPartidoLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(cb_HoraPartido, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         panelDetallesPartidoLayout.setVerticalGroup(
             panelDetallesPartidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -170,27 +167,79 @@ public class VentanaPartidos extends javax.swing.JPanel {
                     .addComponent(tf_FechaPartido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(calendario, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(141, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelDetallesPartidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cb_HoraPartido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7))
+                .addContainerGap(109, Short.MAX_VALUE))
         );
 
         panelTabla.add(panelDetallesPartido, java.awt.BorderLayout.LINE_END);
 
-        add(panelTabla, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 980, 560));
+        tb_Partidos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(tb_Partidos);
 
+        panelTabla.add(jScrollPane1, java.awt.BorderLayout.CENTER);
+
+        add(panelTabla, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 980, 560));
+
+        btn_Nuevo.setIcon(new javax.swing.ImageIcon("C:\\Users\\braul\\Desktop\\carpetas escritorio\\proyectobeibol\\Proyecto-Const.SW-Beisbol\\BeiboletosJavaProject\\BEISBOLETOS\\src\\vistas\\images\\plus-circle.png")); // NOI18N
         btn_Nuevo.setText("Nuevo");
-        add(btn_Nuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, -1));
+        btn_Nuevo.setBorderPainted(false);
+        btn_Nuevo.setContentAreaFilled(false);
+        btn_Nuevo.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        btn_Nuevo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_Nuevo.setPreferredSize(new java.awt.Dimension(71, 24));
+        btn_Nuevo.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        add(btn_Nuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 70, 80));
 
+        btn_Editar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vistas/images/pencil-square.png"))); // NOI18N
         btn_Editar.setText("Editar");
-        add(btn_Editar, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 40, -1, -1));
+        btn_Editar.setBorderPainted(false);
+        btn_Editar.setContentAreaFilled(false);
+        btn_Editar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_Editar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        add(btn_Editar, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 40, -1, 80));
 
+        btn_Borrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vistas/images/archive-box-x-mark.png"))); // NOI18N
         btn_Borrar.setText("Borrar");
-        add(btn_Borrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 40, -1, -1));
+        btn_Borrar.setBorderPainted(false);
+        btn_Borrar.setContentAreaFilled(false);
+        btn_Borrar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_Borrar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        add(btn_Borrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 40, 80, 80));
 
+        btn_Guardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vistas/images/check-circle.png"))); // NOI18N
         btn_Guardar.setText("Guardar");
-        add(btn_Guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 40, -1, -1));
+        btn_Guardar.setBorderPainted(false);
+        btn_Guardar.setContentAreaFilled(false);
+        btn_Guardar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_Guardar.setPreferredSize(new java.awt.Dimension(70, 76));
+        btn_Guardar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        add(btn_Guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 40, 80, 80));
 
+        btn_Cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vistas/images/x-circle.png"))); // NOI18N
         btn_Cancelar.setText("Cancelar");
-        add(btn_Cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 40, -1, -1));
+        btn_Cancelar.setBorderPainted(false);
+        btn_Cancelar.setContentAreaFilled(false);
+        btn_Cancelar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_Cancelar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btn_Cancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_CancelarActionPerformed(evt);
+            }
+        });
+        add(btn_Cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 40, -1, 80));
     }// </editor-fold>//GEN-END:initComponents
 
     private void tf_ClvPartidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_ClvPartidoActionPerformed
@@ -200,6 +249,10 @@ public class VentanaPartidos extends javax.swing.JPanel {
     private void cb_EquipoUnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_EquipoUnoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cb_EquipoUnoActionPerformed
+
+    private void btn_CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_CancelarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_CancelarActionPerformed
 
     
 
@@ -212,12 +265,14 @@ public class VentanaPartidos extends javax.swing.JPanel {
     private com.toedter.calendar.JCalendar calendario;
     private javax.swing.JComboBox<String> cb_EquipoDos;
     private javax.swing.JComboBox<String> cb_EquipoUno;
+    private javax.swing.JComboBox<String> cb_HoraPartido;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel panelDetallesPartido;
     private javax.swing.JPanel panelTabla;
@@ -273,6 +328,10 @@ public class VentanaPartidos extends javax.swing.JPanel {
 
     public JCalendar getCalendario() {
         return calendario;
+    }
+
+    public JComboBox<String> getCb_HoraPartido() {
+        return cb_HoraPartido;
     }
     
     
