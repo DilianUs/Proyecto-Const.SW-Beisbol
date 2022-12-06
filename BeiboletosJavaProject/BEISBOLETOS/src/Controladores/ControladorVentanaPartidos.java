@@ -1,6 +1,7 @@
 package Controladores;
 
 import ComboBoxModel.EquipoComboModel;
+import ModelosD.Equipo;
 import ModelosD.Partido;
 import TableModels.PartidoTableModel;
 import com.toedter.calendar.JDateChooser;
@@ -80,7 +81,11 @@ public class ControladorVentanaPartidos implements ActionListener {
     public void actionPerformed(ActionEvent actionUser) {
         if(actionUser.getSource() == this.ventanaPartidos.getBtn_Nuevo()){
             try {
-                nuevoBtnAction();
+                try {
+                    nuevoBtnAction();
+                } catch (DAOException ex) {
+                    Logger.getLogger(ControladorVentanaPartidos.class.getName()).log(Level.SEVERE, null, ex);
+                }
             } catch (ParseException ex) {
                 Logger.getLogger(ControladorVentanaPartidos.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -97,15 +102,23 @@ public class ControladorVentanaPartidos implements ActionListener {
                 borrarBtnAction();
             } catch (ParseException ex) {
                 Logger.getLogger(ControladorVentanaPartidos.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (DAOException ex) {
+                Logger.getLogger(ControladorVentanaPartidos.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
         if(actionUser.getSource() == this.ventanaPartidos.getBtn_Guardar()){
-                guardarBtnAction();         
+            try {         
+                guardarBtnAction();
+            } catch (ParseException ex) {
+                Logger.getLogger(ControladorVentanaPartidos.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         if(actionUser.getSource() == this.ventanaPartidos.getBtn_Cancelar()){
             try {
                 cancelarBtnAction();
             } catch (ParseException ex) {
+                Logger.getLogger(ControladorVentanaPartidos.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (DAOException ex) {
                 Logger.getLogger(ControladorVentanaPartidos.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
@@ -122,7 +135,7 @@ public class ControladorVentanaPartidos implements ActionListener {
         });
     }
     //metodos de botones
-    private void nuevoBtnAction() throws ParseException {
+    private void nuevoBtnAction() throws ParseException, DAOException {
         loadData();
         setPartido(null);
         setEditableClv(true, true);
@@ -144,7 +157,7 @@ public class ControladorVentanaPartidos implements ActionListener {
         }
     }
 
-    private void borrarBtnAction() throws ParseException {
+    private void borrarBtnAction() throws ParseException, DAOException {
         if(JOptionPane.showConfirmDialog(ventanaPartidos, "¿Seguro que quieres borrar este partido?", "Borrar Partido", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE)== JOptionPane.YES_OPTION){
             try {
                 Partido partidoBorrar = getPartidoSeleccionado();
@@ -155,21 +168,45 @@ public class ControladorVentanaPartidos implements ActionListener {
                 Logger.getLogger(ControladorVentanaEquipos.class.getName()).log(Level.SEVERE, null, ex);
             }
         }else{
-            cancelarBtnAction();
+           
+                cancelarBtnAction();
+          
         }
     }
 
-    private void guardarBtnAction() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    private void guardarBtnAction() throws ParseException {
+        try {
+            saveData();
+            Partido partidoActual = getPartido();
+           
+            Boolean existe = (manager.getPartidoDAO().obtener(partidoActual.getClvPartido())!=null);
+          
+            if(existe==true){
+                manager.getPartidoDAO().modificar(partidoActual);
+            }else{
+                manager.getPartidoDAO().agregar(partidoActual);
+            }
+            setPartido(null);
+            loadData();
+            setEditableClv(false, false);
+            this.ventanaPartidos.getTb_Partidos().clearSelection();
+            this.ventanaPartidos.getBtn_Guardar().setEnabled(false);
+            this.ventanaPartidos.getBtn_Cancelar().setEnabled(false);
+            model.updateModel();
+            model.fireTableDataChanged();
+        } catch (DAOException ex) {
+            Logger.getLogger(ControladorVentanaPartidos.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
-    private void cancelarBtnAction() throws ParseException {
+    private void cancelarBtnAction() throws ParseException, DAOException {
         setPartido(null);
         loadData();
         setEditableClv(false,false);
         this.ventanaPartidos.getTb_Partidos().clearSelection();
         this.ventanaPartidos.getBtn_Guardar().setEnabled(false);
         this.ventanaPartidos.getBtn_Cancelar().setEnabled(false);
+        
     }
 
     public Partido getPartido() {
@@ -200,11 +237,17 @@ public class ControladorVentanaPartidos implements ActionListener {
 
     }
     
-    public void loadData() throws ParseException  {
+    public void loadData() throws ParseException, DAOException  {
         if(this.partido != null){
             this.ventanaPartidos.getTf_ClvPartido().setText(String.valueOf(this.partido.getClvPartido()));
             this.ventanaPartidos.getTf_NomLugar().setText(this.partido.getLugar());
+       
+            String equipoLocal = obtenerEquipoString(partido.getEquipo_Uno());
+            this.ventanaPartidos.getCb_EquipoUno().setSelectedItem(equipoLocal);
+            String equipoVisitante = obtenerEquipoString(partido.getEquipo_Dos());
+            this.ventanaPartidos.getCb_EquipoDos().setSelectedItem(equipoVisitante);
             this.ventanaPartidos.getTf_FechaPartido().setText(this.partido.getFechaPartido());
+            
         }else{
             this.ventanaPartidos.getTf_ClvPartido().setText("");
             this.ventanaPartidos.getTf_NomLugar().setText("");
@@ -213,15 +256,28 @@ public class ControladorVentanaPartidos implements ActionListener {
         
         this.ventanaPartidos.getTf_ClvPartido().requestFocus();
     }
+    
+    private String obtenerEquipoString(int ClvEquipo) throws DAOException{
+             Equipo equipo =manager.getEquipoDAO().obtener(ClvEquipo);
+             String equipoObtenido = equipo.getNombreEquipo()+"("+equipo.getClaveEquipo()+")";
+          
+             return equipoObtenido;    
+    }
+    
+    
+    
     public void saveData(){
-        if(partido == null){
-            partido = new Partido();
+        if(this.partido == null){
+            setPartido(new Partido());
         }
-        partido.setClvPartido(Integer.parseInt(ventanaPartidos.getTf_ClvPartido().getText()));
-        partido.setLugar(ventanaPartidos.getTf_NomLugar().getText());
-        partido.setEquipo_Uno(Integer.parseInt((String) ventanaPartidos.getCb_EquipoUno().getSelectedItem()));
-        partido.setEquipo_Dos(Integer.parseInt((String) ventanaPartidos.getCb_EquipoDos().getSelectedItem()));
-        partido.setFechaPartido(ventanaPartidos.getTf_FechaPartido().getText());
+        this.partido.setClvPartido(Integer.parseInt(ventanaPartidos.getTf_ClvPartido().getText()));
+       this.partido.setLugar(ventanaPartidos.getTf_NomLugar().getText());
+        int clvEquipoUno = obtenerNumeroClv((String) ventanaPartidos.getCb_EquipoUno().getSelectedItem());
+        this.partido.setEquipo_Uno(clvEquipoUno);
+         int clvEquipoDos = obtenerNumeroClv((String) ventanaPartidos.getCb_EquipoDos().getSelectedItem());
+       this. partido.setEquipo_Dos(clvEquipoDos);
+        this.partido.setFechaPartido(ventanaPartidos.getTf_FechaPartido().getText());
+       this. partido.setHora(20);
         
     }
     
@@ -229,5 +285,17 @@ public class ControladorVentanaPartidos implements ActionListener {
        int id = (int) this.ventanaPartidos.getTb_Partidos().getValueAt(this.ventanaPartidos.getTb_Partidos().getSelectedRow(), 0);
        return manager.getPartidoDAO().obtener(id);
     } 
+    private int obtenerNumeroClv(String cadena){
+        char[] cadena_div=cadena.toCharArray();
+        String numerosEncontrados ="";
+        for(int i=0;i<cadena_div.length;i++){
+            if(Character.isDigit(cadena_div[i])){
+                numerosEncontrados +=cadena_div[i];
+            }
+        }
+        
+        int claveObtenida = Integer.parseInt(numerosEncontrados );
+        return claveObtenida;
+    }
 
 }

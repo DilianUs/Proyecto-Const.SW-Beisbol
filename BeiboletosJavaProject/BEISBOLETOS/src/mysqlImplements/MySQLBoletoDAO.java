@@ -19,7 +19,7 @@ public class MySQLBoletoDAO implements BoletoDAO{
     final String INSERT="INSERT INTO boleto(ClvBoleto, ClvPartido) VALUES(?,?)";
     final String DELETE="DELETE FROM boleto WHERE ClvBoleto=?";
     final String UPDATE="UPDATE boleto SET ClvPartido=? WHERE ClvBoleto=?";
-    final String GETALL="SELECT ClvBoleto,ClvPartido FROM eboleto";
+    final String GETALL="SELECT ClvBoleto,ClvPartido FROM boleto";
     final String GETONE="SELECT ClvBoleto,ClvPartido FROM boleto WHERE ClvBoleto=?";
     
     @Override

@@ -126,18 +126,24 @@ public class MySQLPartidoDAO implements PartidoDAO{
     public Partido obtener(Integer id) throws DAOException {
         PreparedStatement statement=null;
         ResultSet rs =null;
-       Partido partidoEncontrado=null;
+        Partido partidoEncontrado=null;
         try {
             statement = jdbc.conectar().prepareStatement(GETONE);
             statement.setInt(1, id);
             rs = statement.executeQuery();
-            
+            if(rs.next()){
+                partidoEncontrado = convertir(rs);
+            }else{
+                partidoEncontrado = null;
+            }
+            /**
             if(rs.next()){
                 partidoEncontrado = convertir(rs);
             }else{
                 throw new DAOException("No se ha encontrado ese registro");
+                
             }
-            
+            **/
         } catch (SQLException ex) {
             throw new DAOException("Error en SQL",ex);
         }finally{
@@ -156,7 +162,8 @@ public class MySQLPartidoDAO implements PartidoDAO{
                 }
             }
         }
-        return partidoEncontrado;
+            return partidoEncontrado;   
+        
     }
 
     @Override
