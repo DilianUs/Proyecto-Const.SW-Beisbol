@@ -1,5 +1,9 @@
 package ModelosD;
 
+import java.util.Date;
+
+
+
 /**
  *
  * @author braul
@@ -10,17 +14,15 @@ public class Partido {
     private int Equipo_Uno;
     private int Equipo_Dos;
     private int Hora;
-    private int Dia;
-    private int Mes;
-
-    public Partido(int ClvPartido, String Lugar, int Equipo_Uno, int Equipo_Dos, int Hora, int Dia, int Mes) {
-        this.ClvPartido = ClvPartido;
-        this.Lugar = Lugar;
-        this.Equipo_Uno = Equipo_Uno;
-        this.Equipo_Dos = Equipo_Dos;
-        this.Hora = Hora;
-        this.Dia = Dia;
-        this.Mes = Mes;
+    private String FechaPartido;
+    
+    public Partido() {
+        this.ClvPartido = 0;
+        this.Lugar = "";
+        this.Equipo_Uno = 0;
+        this.Equipo_Dos = 0;
+        this.Hora = 0;
+        this.FechaPartido = "";
     }
 
     public int getClvPartido() {
@@ -64,27 +66,16 @@ public class Partido {
         this.Hora = Hora;
     }
 
-    public int getDia() {
-        return Dia;
+    public String getFechaPartido() {
+        return FechaPartido;
     }
 
-    public void setDia(int Dia) {
-        this.Dia = Dia;
-    }
-
-    public int getMes() {
-        return Mes;
-    }
-
-    public void setMes(int Mes) {
-        this.Mes = Mes;
+    public void setFechaPartido(String FechaPartido) {
+        this.FechaPartido = FechaPartido;
     }
 
     @Override
     public String toString() {
-        return "Partido{" + "ClvPartido=" + ClvPartido + ", Lugar=" + Lugar + ", Equipo_1=" + Equipo_Uno + ", Equipo_2=" + Equipo_Dos + ", Hora=" + Hora + ", Dia=" + Dia + ", Mes=" + Mes + '}';
+        return "Partido{" + "ClvPartido=" + ClvPartido + ", Lugar=" + Lugar + ", Equipo_Uno=" + Equipo_Uno + ", Equipo_Dos=" + Equipo_Dos + ", Hora=" + Hora + ", FechaPartido=" + FechaPartido + '}';
     }
-
-    
-    
 }

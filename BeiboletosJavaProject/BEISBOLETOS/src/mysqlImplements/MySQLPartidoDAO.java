@@ -7,10 +7,12 @@ import java.util.List;
 import mysqlImplements.Conexion;
 
 import ModelosDAO.PartidoDAO;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+
 
 /**
  *
@@ -18,11 +20,11 @@ import java.util.ArrayList;
  */
 public class MySQLPartidoDAO implements PartidoDAO{
     Conexion jdbc = new Conexion();
-    final String INSERT="INSERT INTO partidos(ClvPartido, direccion, Equipo_1, Equipo_2, Hora, Dia, Mes) VALUES (?,?,?,?,?,?,?)";
+    final String INSERT="INSERT INTO partidos(ClvPartido, direccion, Equipo_1, Equipo_2, Hora, FechaPartido) VALUES (?,?,?,?,?,?)";
     final String DELETE="DELETE FROM partidos WHERE ClvPartido=?";
-    final String UPDATE="UPDATE partidos SET direccion=?, Equipo_1=?, Equipo_2=?, Hora=?,Dia=?,Mes=? WHERE ClvPartido=?";
-    final String GETALL="SELECT ClvPartido, direccion, Equipo_1, Equipo_2, Hora, Dia, Mes FROM partidos";
-    final String GETONE="SELECT ClvPartido, direccion, Equipo_1, Equipo_2, Hora, Dia, Mes FROM partidos WHERE ClvPartido=?";
+    final String UPDATE="UPDATE partidos SET direccion=?, Equipo_1=?, Equipo_2=?, Hora=?,FechaPartido=? WHERE ClvPartido=?";
+    final String GETALL="SELECT ClvPartido, direccion, Equipo_1, Equipo_2, Hora, FechaPartido FROM partidos";
+    final String GETONE="SELECT ClvPartido, direccion, Equipo_1, Equipo_2, Hora, FechaPartido FROM partidos WHERE ClvPartido=?";
     @Override
     public void agregar(Partido e) throws DAOException {
       PreparedStatement statement=null;
@@ -33,8 +35,7 @@ public class MySQLPartidoDAO implements PartidoDAO{
            statement.setInt(3, e.getEquipo_Uno());
            statement.setInt(4, e.getEquipo_Dos());
            statement.setInt(5, e.getHora());
-           statement.setInt(6, e.getDia());
-           statement.setInt(7, e.getMes());
+           statement.setString(6,  e.getFechaPartido());
            if(statement.executeUpdate()==0){
                throw new DAOException("No se pudo guardar");
            }
@@ -84,8 +85,7 @@ public class MySQLPartidoDAO implements PartidoDAO{
             statement.setInt(2, e.getEquipo_Uno());
             statement.setInt(3, e.getEquipo_Dos());
             statement.setInt(4, e.getHora());
-            statement.setInt(5, e.getDia());
-            statement.setInt(6, e.getMes());
+            statement.setString(6, e.getFechaPartido());
             statement.setInt(7, e.getClvPartido());
             if(statement.executeUpdate()==0){
                 throw new DAOException("No se pudo modificar el modelo");
@@ -111,9 +111,14 @@ public class MySQLPartidoDAO implements PartidoDAO{
          int Equipo_Uno = rs.getInt("Equipo_1");
          int Equipo_Dos = rs.getInt("Equipo_2");
          int Hora = rs.getInt("Hora");
-         int Dia = rs.getInt("Dia");
-         int Mes = rs.getInt("Mes");
-        Partido partido = new Partido(ClvPartido, Lugar, Equipo_Uno, Equipo_Dos, Hora, Dia, Mes);
+         String FechaPartido = rs.getString("FechaPartido");
+        Partido partido = new Partido();
+        partido.setClvPartido(ClvPartido);
+        partido.setLugar(Lugar);
+        partido.setEquipo_Uno(Equipo_Uno);
+        partido.setEquipo_Dos(Equipo_Dos);
+        partido.setHora(Hora);
+        partido.setFechaPartido(FechaPartido);
         return partido;
         
     }

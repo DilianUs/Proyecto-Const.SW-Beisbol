@@ -36,8 +36,7 @@ public class PartidoTableModel extends AbstractTableModel{
             case 2: return "Equipo_Uno";
             case 3: return "Equipo_Dos";
             case 4: return "Hora";
-            case 5: return "Dia";
-            case 6: return "Mes";
+            case 5: return "Fecha del Partido";
             default: return "[no]";
         }
     } 
@@ -50,7 +49,7 @@ public class PartidoTableModel extends AbstractTableModel{
 
     @Override
     public int getColumnCount() {
-        return 7;
+        return 6;
     }
 
     @Override
@@ -70,8 +69,7 @@ public class PartidoTableModel extends AbstractTableModel{
             case 2: return equipoUno.getNombreEquipo();
             case 3: return equipoDos.getNombreEquipo();
             case 4: return preguntado.getHora();
-            case 5: return preguntado.getDia();
-            case 6: return preguntado.getMes();
+            case 5: return preguntado.getFechaPartido();
             default: return "";
         }
     }

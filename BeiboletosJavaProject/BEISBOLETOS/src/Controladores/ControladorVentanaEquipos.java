@@ -22,7 +22,7 @@ public class ControladorVentanaEquipos implements ActionListener{
     private boolean editableClv;
     private boolean editableNom;
     private Equipo equipo;
-   
+
     public ControladorVentanaEquipos(VentanaEquipos ventana) throws DAOException {
         this.manager = new MySQLDaoManager();
         this.model = new EquipoTableModel(manager.getEquipoDAO());
@@ -90,10 +90,7 @@ public class ControladorVentanaEquipos implements ActionListener{
         try {
             Equipo equipoSelected = getEquipoSeleccionado();
             loadData(equipoSelected);
-            /**
-            this.ventanaEquipos.getTf_ClvEquipo().setText(String.valueOf(equipoSelected.getClaveEquipo()));
-            this.ventanaEquipos.getTf_NomEquipo().setText(equipoSelected.getNombreEquipo());
-            * */
+ 
             setEditable(false,true); 
             
             this.ventanaEquipos.getBtn_Guardar().setEnabled(true);
